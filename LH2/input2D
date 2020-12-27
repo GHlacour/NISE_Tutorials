@@ -1,0 +1,25 @@
+Propagation Coupling
+Couplingcut 0
+Threshold 0.001
+Hamiltonianfile Energy.bin
+Dipolefile Dipole.bin
+Anharmonicfile Anharmonicity.bin
+Overtonedipolefile OvertoneDipole.bin
+Length 200000
+Samplerate 100
+Lifetime 1000
+Timestep 3
+Trotter 1
+Anharmonicity 100
+Format Dislin
+MinFrequencies 11000 11000 11100
+MaxFrequencies 13000 13000 13000
+Technique 2DUVvis
+FFT 2048
+#BeginPoint 0
+#EndPoint 1
+RunTimes 256 0 256
+Singles 27
+#Project
+Sites 1
+0

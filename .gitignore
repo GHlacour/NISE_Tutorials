@@ -1,0 +1,7 @@
+# Filetypes to ignore
+*.bin
+*.txt
+*.dat
+*.log
+slurm*
+*.out

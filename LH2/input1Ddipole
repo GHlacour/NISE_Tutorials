@@ -1,0 +1,27 @@
+Propagation Coupling
+Couplingcut 0
+Threshold 0.001
+HamiltonianType TransitionDipole
+Hamiltonianfile SiteEnergy.bin
+Dipolefile Dipole.bin
+Anharmonicfile Anharmonicity.bin
+Positionfile Positions.bin
+Overtonedipolefile OvertoneDipole.bin
+Length 200000
+Samplerate 100
+Lifetime 1000
+Timestep 3
+Trotter 1
+Anharmonicity 100
+Format Dislin
+MinFrequencies 11000 11000 11100
+MaxFrequencies 13000 13000 13000
+Technique Absorption
+FFT 2048
+#BeginPoint 0
+#EndPoint 1
+RunTimes 1023 0 256
+Singles 27
+#Project
+Sites 1
+0
