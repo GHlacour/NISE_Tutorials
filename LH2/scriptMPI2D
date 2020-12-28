@@ -1,18 +1,18 @@
 #!/bin/bash
 #SBATCH --job-name NISE-Xlong
-#SBATCH --ntasks=2
-#SBATCH --cpus-per-task=4
+#SBATCH --ntasks=10
+#SBATCH --cpus-per-task=1
 #SBATCH --time=0-00:30:00
 #SBATCH --partition=short
 #SBATCH --mem=6000
 
-export OMP_NUM_THREADS=4
+export OMP_NUM_THREADS=1
 
 # Change to the directory where the files are located
 cd $SLURM_SUBMIT_DIR
 
 # You may need to change the module name
-module load foss/2018a
+module load foss
 
 # It is assumed that the bin files are already in your home
 # You may have to change the location of the programme

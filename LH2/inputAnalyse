@@ -9,7 +9,7 @@ Positionfile Positions.bin
 Overtonedipolefile OvertoneDipole.bin
 Length 200000
 Samplerate 1
-Lifetime 1000
+Lifetime 300
 Timestep 3
 Trotter 1
 Anharmonicity 100

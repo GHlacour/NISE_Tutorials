@@ -6,8 +6,8 @@ Dipolefile Dipole.bin
 Anharmonicfile Anharmonicity.bin
 Overtonedipolefile OvertoneDipole.bin
 Length 200000
-Samplerate 100
-Lifetime 1000
+Samplerate 200
+Lifetime 300
 Timestep 3
 Trotter 1
 Anharmonicity 100
@@ -18,8 +18,9 @@ Technique 2DUVvis
 FFT 2048
 #BeginPoint 0
 #EndPoint 1
-RunTimes 128 0 128
+RunTimes 64 0 64
 Singles 27
 #Project
 Sites 1
 0
+PrintLevel 2

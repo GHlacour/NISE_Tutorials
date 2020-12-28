@@ -8,8 +8,8 @@ Anharmonicfile Anharmonicity.bin
 Positionfile Positions.bin
 Overtonedipolefile OvertoneDipole.bin
 Length 200000
-Samplerate 100
-Lifetime 1000
+Samplerate 20
+Lifetime 300
 Timestep 3
 Trotter 1
 Anharmonicity 100
@@ -20,7 +20,7 @@ Technique Absorption
 FFT 2048
 #BeginPoint 0
 #EndPoint 1
-RunTimes 1023 0 256
+RunTimes 128 0 128
 Singles 27
 #Project
 Sites 1
