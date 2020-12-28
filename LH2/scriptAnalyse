@@ -12,7 +12,7 @@ setenv WD $SLURM_SUBMIT_DIR
 #echo $TMPDIR
 #cd $TMPDIR
 
-time ~/git/NISE_2017/bin/NISE input1D
+time ~/git/NISE_2017/bin/NISE inputAnalyse
 
 #cp *.log $WD
 #cp *.dat $WD

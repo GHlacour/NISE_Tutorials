@@ -1,10 +1,10 @@
 #!/bin/csh
 #SBATCH --job-name NISE3
 #SBATCH --nodes=1
-#SBATCH --ntasks=8
+#SBATCH --ntasks=1
 
 module load foss
-setenv OMP_NUM_THREADS 8
+setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
 setenv WD $SLURM_SUBMIT_DIR
