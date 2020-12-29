@@ -37,6 +37,8 @@ SH=numpy.zeros(units)
 mu4bin=numpy.zeros((units*3))
 #  Positions
 pos4bin=numpy.zeros((units*3))
+pos41bin=numpy.zeros((units*3))
+pos42bin=numpy.zeros((units*3))
 # Helping arrays for Hamiltonian construction
 B800=numpy.zeros((units))
 ssigma=numpy.ones((units))*sigma
@@ -48,6 +50,7 @@ file_SH=open("SiteEnergy.bin","wb")
 file_x=open("Positions.txt","w")
 file_mu=open("Dipole.bin","wb")
 file_pos=open("Positions.bin","wb")
+file_pos2=open("Positions2.bin","wb")
 file_HH=open("Ham.txt","w")
 file_dp=open("Dipole.txt","w")
 
@@ -120,6 +123,12 @@ for atom in range(27):
    pos4bin[atom]=r[atom][0]
    pos4bin[units+atom]=r[atom][1]
    pos4bin[2*units+atom]=r[atom][2]
+   pos41bin[atom]=x[atom][1]
+   pos41bin[units+atom]=y[atom][1]
+   pos41bin[2*units+atom]=z[atom][1]
+   pos42bin[atom]=x[atom][2]
+   pos42bin[units+atom]=y[atom][2]
+   pos42bin[2*units+atom]=z[atom][2]
 
 # Generate helping arrays for Hamiltonian construction.
 # Accounting for difference between B850 and B800 chromophores
@@ -172,6 +181,12 @@ for st in range(steps):
    step.tofile(file_pos)
    puf=numpy.array(pos4bin,'float32')
    puf.tofile(file_pos)
+   step.tofile(file_pos2)
+   puf2=numpy.array(pos41bin,'float32')
+   puf2.tofile(file_pos2)
+   step.tofile(file_pos2)
+   puf2=numpy.array(pos42bin,'float32')
+   puf2.tofile(file_pos2)
 
 # Write square Hamiltonian to hunam readable file
 for ai in range(27):
@@ -193,4 +208,5 @@ file_SH.close
 file_x.close
 file_mu.close
 file_pos.close
+file_pos2.close
 file_dp.close
