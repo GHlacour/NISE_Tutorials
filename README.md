@@ -11,6 +11,7 @@ The Hamiltonian trajectory is created from the 1kzu.pdb protein data bank file.
 7. Find the 2D spectra from the calculated response functions with: 2DFFT input2D
 8. Plot the 2D spectra with the plot2D.py script. Make sure that the plotted spectral region correspond to the region of interest.
 9. Calculate the circular dichroim by submitting the scriptCD script.
+
 Examples are also given for calculating the couplings on the fly with the transition-dipole (TDC) and extended-dipole (EDC) coupling schemes. This reduce the size of the file needed to store the Hamiltonian considerably as only the diagonal part is stored. The couplings are generated from the dipoles and positions of magnesium atoms in the TDC case and the position of the NB and ND in the EDC case.
 
 
