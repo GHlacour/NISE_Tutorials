@@ -167,20 +167,26 @@ for st in range(steps):
    # Update random numbers according to J. Chem. Phys. 127:084507 (2007)   
    diag=diag*alpha+numpy.random.randn(27)*beta
    # Save Hamiltonian, dipoles, and positions to binary files
+   # Full Hamiltonian
    Hf=numpy.array(H,'float32')
    step=numpy.array([0],'float32')
    step.tofile(file_H)  
    Hf.tofile(file_H)
+   # Diagonal part of Hamiltonian
    HSf=numpy.array(SH,'float32')
    step=numpy.array([0],'float32')
    step.tofile(file_SH)
    HSf.tofile(file_SH)
+   # Dipole moments
    step.tofile(file_mu)
    muf=numpy.array(mu4bin,'float32')
    muf.tofile(file_mu)
+   # Positions of Mg
+   step=numpy.array([100],'float32') # Box size in Angstrom
    step.tofile(file_pos)
    puf=numpy.array(pos4bin,'float32')
    puf.tofile(file_pos)
+   # Positions of NB and ND
    step.tofile(file_pos2)
    puf2=numpy.array(pos41bin,'float32')
    puf2.tofile(file_pos2)
