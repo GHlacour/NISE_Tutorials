@@ -5,13 +5,20 @@ import numpy
 # To run the code use python 3.7 or newer and type:
 # python GenHam.py
 
+# Note that in this file the B850 alpha and beta are split by 300 cm-1
+# to improve the CD spectra. The sigma value for these chromopores is
+# also reduced from 320 to 305 cm-1 compared to the study by Sardjan et al.
+
 E0=12255 # cm-1 The B850 Chromophore average gap
 E1=240 # cm-1 The extra energy for the B800 Chromophore gap
+E2=-300 # Gap between alpha and beta chromophores 
 MU0=4.481 # Debye The transition dipole before the application of a scale factor
 sigma=320 # cm-1 The width of the energy distribution for B850
 sigma1=141 # cm-1 The width of the energy distribution for B800
+sigma=305 # Adapted for CD
 tau=150 # fs The correlation time for the overdamped Brownian oscillators
-fcs=1.25; # Factor to scale couplings (resulting in an effective dipole of 5.001 Debye)
+fcs=1.25 # Factor to scale couplings (resulting in an effective dipole of 5.001 Debye)
+
 dt=3 # fs Time between generated snapshots
 units=27 # The number of chromophores
 steps=200000 # Number of timesteps
@@ -100,13 +107,21 @@ while True:
 # Verify that the correct number (9) of unique dye atoms were read from file
 print(index)
 
+# Generate helping arrays for Hamiltonian construction.
+# Accounting for difference between B850 and B800 chromophores
+for atom in range(9):
+      B800[3*atom+1]=E1
+      ssigma[3*atom+1]=sigma1
+      B800[3*atom+2]=+E2/2
+      B800[3*atom]=-E2/2
+
 # Construct arrays with transition dipole moments and positions
 for atom in range(27):
    # Write positions to human readable file
    file_x.write(str(x[atom][0]) + " " + str(y[atom][0]) + " " + str(z[atom][0]) + "\n")
    mu[atom][0]=x[atom][2]-x[atom][1]
    mu[atom][1]=y[atom][2]-y[atom][1]
-   mu[atom][2]=z[atom][2]-z[atom][1]  
+   mu[atom][2]=z[atom][2]-z[atom][1]   
    mum=numpy.sqrt(mu[atom][0]**2+mu[atom][1]**2+mu[atom][2]**2)
    mu[atom][0]=mu[atom][0]/mum
    mu[atom][1]=mu[atom][1]/mum
@@ -129,12 +144,6 @@ for atom in range(27):
    pos42bin[atom]=x[atom][2]
    pos42bin[units+atom]=y[atom][2]
    pos42bin[2*units+atom]=z[atom][2]
-
-# Generate helping arrays for Hamiltonian construction.
-# Accounting for difference between B850 and B800 chromophores
-for atom in range(9):
-      B800[3*atom+1]=E1
-      ssigma[3*atom+1]=sigma1
 
 # Create Hamiltonian first off-diagonal part
 for ai in range(27):
@@ -194,7 +203,7 @@ for st in range(steps):
    puf2=numpy.array(pos42bin,'float32')
    puf2.tofile(file_pos2)
 
-# Write square Hamiltonian to hunam readable file
+# Write square Hamiltonian to human readable file
 for ai in range(27):
   for aj in range(27):
     if aj<ai:

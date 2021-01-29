@@ -12,7 +12,8 @@ setenv WD $SLURM_SUBMIT_DIR
 #echo $TMPDIR
 #cd $TMPDIR
 
-time ~/git/NISE_2017/bin/NISE inputLDdipole
+#time ~/git/NISE_2017/bin/NISE inputLDdipole
+time ~/NISE/NISE_2017/bin/NISE inputLDdipole
 
 #cp *.log $WD
 #cp *.dat $WD
