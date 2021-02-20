@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
 
-module load foss
+module load foss/2019a
 setenv OMP_NUM_THREADS 8
 setenv MKL_NUM_THREADS 1
 
