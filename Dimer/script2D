@@ -1,0 +1,26 @@
+#!/bin/csh
+#SBATCH --job-name "Cluster_FTIR"
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --time=0-00:30:00
+
+setenv OMP_NUM_THREADS 8
+setenv MKL_NUM_THREADS 1
+
+setenv WD $SLURM_SUBMIT_DIR
+
+echo $TMPDIR
+cd $TMPDIR
+
+# Copy files to temporary directory
+
+cp $WD/inp* $TMPDIR
+cp $WD/stochastic $TMPDIR
+
+~/NISE/NISE_2017/bin/translate inpTra
+time ~/NISE/NISE_2017/bin/NISE input2D
+~/NISE/NISE_2017/bin/2DFFT input2D
+
+cp *.log $WD
+cp *.dat $WD
+

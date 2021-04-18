@@ -121,11 +121,11 @@ angle.insert(0, '90')
 angleLabel=tk.Label(text="Correlation angle in "+degree)
 # Timestep
 deltat=tk.Entry(window)
-deltat.insert(0, '5')
+deltat.insert(0, '10')
 deltatLabel=tk.Label(text="Timestep in fs")
 # Length
 length=tk.Entry(window)
-length.insert(0, '50000')
+length.insert(0, '100000')
 lengthLabel=tk.Label(text="Trajectory length in steps")
 # Dipole angle
 angle2=tk.Entry(window)
