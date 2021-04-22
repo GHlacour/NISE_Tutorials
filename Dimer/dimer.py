@@ -10,6 +10,7 @@ from matplotlib.figure import Figure
 
 icmstr="cm\N{SUPERSCRIPT MINUS}\N{SUPERSCRIPT ONE}"
 degree="\N{DEGREE SIGN}"
+kappastr="\u03BA"
 
 def save():
     energy=open("Energy.txt","w")
@@ -41,7 +42,15 @@ def save():
 def quit():
     exit()
 
+def update_kappa():
+    kappa=1/(float(time.get())*float(sigma.get()))/3e-5
+    kappaLabel=tk.Label(text="Linebroadening parameter "+kappastr)
+    kappaValue=tk.Label(text=str(kappa))
+    kappaLabel.grid(row=12,column=0)
+    kappaValue.grid(row=12,column=1)
+
 def update_canvas():
+    update_kappa()
     fig=Figure(figsize=(5,5),dpi=100)
     plot1 = fig.add_subplot(111)
     xmin=float(w0.get())-float(J.get())-3*float(sigma.get())-0.5*float(deltaw.get())
@@ -70,7 +79,7 @@ def update_canvas():
     canvas.draw()
 
     # placing the canvas on the Tkinter window
-    canvas.get_tk_widget().grid(column=0,row=11,columnspan=2,sticky=tk.W+tk.E)
+    canvas.get_tk_widget().grid(column=0,row=13,columnspan=2,sticky=tk.W+tk.E)
 
     # creating the Matplotlib toolbar
 #    toolbar = NavigationToolbar2Tk(canvas,window)
@@ -84,7 +93,7 @@ window = tk.Tk()
 #frame=tk.Frame(window)
 # We want two columns with multiple rows
 window.columnconfigure([0,1], minsize=150)
-window.rowconfigure([0, 1,2,3,4,5,6,7,8,9,10,11], minsize=25)
+window.rowconfigure([0, 1,2,3,4,5,6,7,8,9,10,11,12,13], minsize=25)
 window.title("Dimer model creator")
 window.resizable(width=False, height=False)
 
@@ -131,6 +140,8 @@ lengthLabel=tk.Label(text="Trajectory length in steps")
 angle2=tk.Entry(window)
 angle2.insert(0, '90')
 angle2Label=tk.Label(text="Angle between dipoles in "+degree)
+# Lineabroadening parameter
+update_kappa()
 
 # Configure Grid
 w0Label.grid(row=0,column=0)
@@ -154,6 +165,7 @@ angle2.grid(row=8,column=1)
 btn_update.grid(row=9,column=0)
 btn_save.grid(row=10,column=0)
 btn_quit.grid(row=10,column=1)
+ttk.Separator(window,orient='horizontal').grid(row=11,column=0,columnspan=2,sticky='ew')
 update_canvas()
 window.mainloop()
 
