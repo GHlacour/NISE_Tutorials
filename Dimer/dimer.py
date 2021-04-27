@@ -49,6 +49,13 @@ def update_kappa():
     kappaLabel.grid(row=12,column=0)
     kappaValue.grid(row=12,column=1)
 
+def lineshape():
+    tc=float(time.get())
+    si=float(sigma.get())
+    t=np.linspace(0,tc*3,100)
+    g=(si/tc)**2*(np.exp(-t/tc)+t/tc-1)
+    I=np.fft.fft(g)
+
 def update_canvas():
     update_kappa()
     fig=Figure(figsize=(5,5),dpi=100)
@@ -122,7 +129,7 @@ sigma.insert(0, '25')
 sigmaLabel=tk.Label(text="Disorder magnitude in "+icmstr)
 # Correlation time
 time=tk.Entry(window)
-time.insert(0, '25')
+time.insert(0, '250')
 timeLabel=tk.Label(text="Correlation time in fs")
 # Correlation angle
 angle=tk.Entry(window)
