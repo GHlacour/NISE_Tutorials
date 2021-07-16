@@ -2,14 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 # This python script require vpython to be installed (see vpython.org)
 # vpython is used for the structural visualization
-from vpython import *
+#from vpython import *
 import sys
-sys.path.append("../../Hamiltonians/Spectra")
-sys.path.append("../../Hamiltonians/Structure")
-import Spectra
-import Structure
-import CD
-import visHam
+#sys.path.append("../../Hamiltonians/Spectra")
+#sys.path.append("../../Hamiltonians/Structure")
+#import Spectra
+#import Structure
+#import CD
+#import visHam
 
 # This file create the Hamiltonian trajectory for LH2 using the structure
 # from the 1kzu pdb structure file included.
@@ -182,10 +182,10 @@ file_input.close
 
 # Plot structure
 #Structure.visual(r,3*mu,N,1)
-Spectra.absorption(HH,mu,N,10)
-CD.CD(HH,r,mu,N,10)
-reorder=np.array([0,2,1, 3,5,4, 6,8,7, 15,17,16,  12,14,13,  9,11,10, 18,20,19, 21,23,22, 24,26,25])
-HH=HH[:,reorder]
-HH=HH[reorder,:]
-visHam.visHam(HH,N)
+#Spectra.absorption(HH,mu,N,10)
+#CD.CD(HH,r,mu,N,10)
+#reorder=np.array([0,2,1, 3,5,4, 6,8,7, 15,17,16,  12,14,13,  9,11,10, 18,20,19, 21,23,22, 24,26,25])
+#HH=HH[:,reorder]
+#HH=HH[reorder,:]
+#visHam.visHam(HH,N)
 
