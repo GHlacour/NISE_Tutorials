@@ -8,7 +8,7 @@ Overtonedipolefile OvertoneDipole.bin
 Length 100000
 Samplerate 100
 Lifetime 1000
-Timestep 5
+Timestep 10
 Trotter 1
 Anharmonicity 100
 Format Dislin
