@@ -35,7 +35,7 @@ for i in s800:
 
 plt.plot(Data[:,0],P850)
 plt.plot(Data[:,0],P800)
-plt.xlabel('$\omega$ [cm$^{-1}$]',fontsize=16)
+plt.xlabel('Time [fs]',fontsize=16)
 plt.ylabel('Population',fontsize=16)
 plt.savefig('PopulationF.png')
 plt.show()

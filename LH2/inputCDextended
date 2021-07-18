@@ -1,0 +1,27 @@
+Propagation Coupling
+Couplingcut 0
+Threshold 0.001
+HamiltonianType ExtendedDipole
+Hamiltonianfile SiteEnergy.bin
+Dipolefile Dipole.bin
+Anharmonicfile Anharmonicity.bin
+Positionfile Positions2.bin
+Overtonedipolefile OvertoneDipole.bin
+Length 200000
+Samplerate 20
+Lifetime 300
+Timestep 3
+Trotter 1
+Anharmonicity 100
+Format Dislin
+MinFrequencies 11000 11000 11100
+MaxFrequencies 13000 13000 13000
+Technique CD
+FFT 2048
+#BeginPoint 0
+#EndPoint 1
+RunTimes 128 0 128
+Singles 27
+#Project
+Sites 1
+0
