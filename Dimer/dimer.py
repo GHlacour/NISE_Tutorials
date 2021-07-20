@@ -73,9 +73,9 @@ def update_canvas():
         dw=float(sigma.get())
     a1=float(w0.get())+dw/2
     a2=a1-dw
-    plot1.annotate(s='',xy=(0.5,a1),xytext=(0.5,a2),arrowprops=dict(arrowstyle='<->'))
+    plot1.annotate(text='',xy=(0.5,a1),xytext=(0.5,a2),arrowprops=dict(arrowstyle='<->'))
     Jtxt="J="+J.get()+" "+icmstr
-    plot1.annotate(s=Jtxt,xy=(0.6,(a1+a2)/2),xytext=(0.6,(a1+a2)/2))
+    plot1.annotate(text=Jtxt,xy=(0.6,(a1+a2)/2),xytext=(0.6,(a1+a2)/2))
     # Draw arrows for dipoles
     ###
 
