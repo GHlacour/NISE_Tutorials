@@ -9,10 +9,17 @@ plt.rcParams['ytick.major.width']=2
 plt.rcParams['xtick.direction']='in'
 plt.rcParams['ytick.direction']='in'
 
-H=np.loadtxt('Energy.txt')
+Data = np.loadtxt('TD_Absorption.dat')
 
-plt.plot(H[:,0],H[:,1])
-plt.plot(H[:,0],H[:,3])
+plt.plot(Data[:,0],Data[:,1])
 plt.xlabel('Time [fs]',fontsize=16)
-plt.ylabel('Site Energy',fontsize=16)
+plt.ylabel('Response function [arb.u.]',fontsize=16)
 plt.show()
+
+Data = np.loadtxt('Absorption.dat')
+
+plt.plot(Data[:,0],Data[:,1])
+plt.xlabel('$\omega$ [cm$^{-1}$]',fontsize=16)
+plt.ylabel('Absorption [arb.u.]',fontsize=16)
+plt.show()
+
