@@ -157,11 +157,11 @@ btn_quit = tk.Button(text="Quit", command=quit)
 # Average Frequency
 w0=tk.Entry(window)
 w0.insert(0, '1200')
-w0Label=tk.Label(text="Average frequeny in "+icmstr)
+w0Label=tk.Label(text="Average frequency in "+icmstr)
 # Frequency Difference
 deltaw=tk.Entry(window)
 deltaw.insert(0, '0')
-deltawLabel=tk.Label(text="Frequeny difference in "+icmstr)
+deltawLabel=tk.Label(text="Frequency difference in "+icmstr)
 # Coupling
 J=tk.Entry(window)
 J.insert(0, '25')

@@ -8,6 +8,8 @@ Overtonedipolefile OvertoneDipole.bin
 Length 200000
 Samplerate 200
 Lifetime 300
+Homogen 0.0
+Inhomogen 0.0
 Timestep 3
 Trotter 1
 Anharmonicity 100
