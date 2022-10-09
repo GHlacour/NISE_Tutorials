@@ -1,5 +1,5 @@
 Propagation Coupling
-Couplingcut 0.1
+Couplingcut 0
 Threshold 0.001
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin

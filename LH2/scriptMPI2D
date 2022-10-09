@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name NISE-Xlong
-#SBATCH --ntasks=4
+#SBATCH --ntasks=8
 #SBATCH --cpus-per-task=4
 #SBATCH --time=0-00:30:00
 #SBATCH --partition=short
