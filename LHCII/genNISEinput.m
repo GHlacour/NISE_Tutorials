@@ -132,9 +132,9 @@ boxmax = ceil(max(box)); % Cubic box size containing all atoms
 
 %% Write to files
 % Generate energy and dipole
-fid_ham = fopen(f_ham,'w');
-fid_dp = fopen(f_dp,'w');
-fid_pos = fopen(f_pos,'w');
+fid_ham = fopen([f_ham '.bin'],'w');
+fid_dp = fopen([f_dp '.bin'],'w');
+fid_pos = fopen([f_pos '.bin'],'w');
 for nt = 1:Nstep
     H = tril(diag(E(:,nt))+C.V);
     H = H(:);
