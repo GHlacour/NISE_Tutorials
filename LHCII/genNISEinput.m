@@ -28,12 +28,13 @@ f_iLum = 'inputLum'; % NISE Luminescence
 f_iCD = 'inputCD'; % NISE circular dichroism
 f_iLD = 'inputLD'; % NISE linear dichroism
 f_iDOS = 'inputDOS'; % NISE density of states
+f_MCFRET = 'inputMCFRET'; % NISE MCFRET rates
 
 %% Parameters
-sigma = [60 140]; % Disorders (static & dynamic) [cm-1]
-tauc = [150 1000000]; % Correlation time [fs]
-dt = 1; %Time step for trajectories [fs]
-Nstep = 20000; % Number of time steps
+sigma = [140 60]; % Disorders (dynamic & static) [cm-1]
+tauc = [150 10000]; % Correlation time [fs]
+dt = 2; %Time step for trajectories [fs]
+Nstep = 200000; % Number of time steps
 taudeph = 150; % Dephasing time [fs]
 Tw = 0; % Waiting time for 2DES [fs]
 T = 300; % Temperature (K)
@@ -120,6 +121,8 @@ niseDOS.Technique = 'DOS';
 % NSIE input for MCFRET
 niseMC = nise1D;
 niseMC.Technique = 'MCFRET';
+niseMC.Project = '';
+niseMC.Sites = sprintf('%d\n',[N 0:N-1]);
 
 %% Generate energy trajectories
 dE = odam_trajectory(E0,0:dt:Nstep*dt,sigma,1./tauc); % Energy fluctuation [cm-1]
@@ -187,6 +190,9 @@ writeinput(niseCD,f_iCD);
 
 % Luminesence
 writeinput(niseLum,f_iLum);
+
+% MCFRET
+writeinput(niseMC,f_MCFRET);
 
 %% If NISE is installed, run the calculations
 niseDir = '~/NISE_2017/bin/';
