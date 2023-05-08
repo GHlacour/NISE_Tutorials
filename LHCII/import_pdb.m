@@ -43,7 +43,7 @@ Index = find(not(cellfun('isempty',IndexCRYS)));
 j = 0;atom=[];
 for i = 1:length(data)
     line = data{i};
-    if length(line)>=4 && contains(chainlist,line(22)) && strcmp(line(1:6),'HETATM')
+    if length(line)>=22 && contains(chainlist,line(22)) && strcmp(line(1:6),'HETATM')
         j = j + 1;
         atom(j).molid = str2double(line(23:26));
         atom(j).resname = strtrim(line(18:20));

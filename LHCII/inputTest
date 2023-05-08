@@ -1,0 +1,18 @@
+Propagation Coupling
+Couplingcut 0
+Threshold 0.001
+Hamiltonianfile Energy.bin
+Dipolefile Dipole.bin
+Length 10001
+Samplerate 20
+Lifetime 100
+Timestep 1
+Trotter 1
+Anharmonicity 100
+Format Dislin
+MinFrequencies 14000 14000 14000
+MaxFrequencies 16500 16500 16500
+Technique CG_2DES
+FFT 2048
+RunTimes 150 100 150
+Singles 14

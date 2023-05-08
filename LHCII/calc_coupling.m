@@ -21,7 +21,7 @@ out = struct;
 DS.CHL = 15; % Chl b
 DS.CLA = 21; % Chl a
 DS.PHO = 13; % Pheophytin (Raszewski 2008)
-
+DS.BCL = 44; % BChla
 %  n - refractive index
 n = 1.4;
 

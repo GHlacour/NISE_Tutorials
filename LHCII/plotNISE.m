@@ -1,14 +1,19 @@
 %Plot calculation results from NISE
 
 % Linear abs % Luminescence
-if isfile('Absorption.dat') && isfile('Luminescence.dat')
+if isfile('Absorption.dat')
     datlin = load('Absorption.dat');
-    datlum = load('Luminescence.dat');
-    figure; plot(1e7./datlin(:,1),normalizing(datlin(:,2),'scale'));
-    hold on;
-    plot(1e7./datlum(:,1),normalizing(datlum(:,2),'scale'));
+    figure; plot(datlin(:,1),normalizing(datlin(:,2),'scale'));
     title('Absorption & Luminescence');
-    xlabel('Wavelength (nm)');
+    xlabel('Wavenumber (cm^{-1})');
+    ylabel('Intensity (au)');
+end
+if isfile('Luminescence.dat')
+    hold on;
+    datlum = load('Luminescence.dat');
+    plot(datlum(:,1),normalizing(datlum(:,2),'scale'));
+    title('Absorption & Luminescence');
+    xlabel('Wavenumber (cm^{-1})');
     ylabel('Intensity (au)');
 end
 

@@ -11,8 +11,9 @@
 % - NISE input files (translation, Absorption, 2DES, ...)
 
 %% Files
-f_pdb = '1rwt.pdb'; % Structure pdb
-f_site = 'Site.txt'; % Site energies
+f_pdb = {fullfile('pdb','Chlab.pdb'),'Y'}; % Structure pdb
+f_site = fullfile('Energy','Chlab.txt'); % Site energies
+
 f_ham = 'Energy'; % Hamiltonian input for NISE
 f_dp = 'Dipole'; % Dipole input for NISE
 f_pos = 'Position'; % Position input for NISE
@@ -29,15 +30,18 @@ f_iLD = 'inputLD'; % NISE linear dichroism
 f_iDOS = 'inputDOS'; % NISE density of states
 
 %% Parameters
-E0 = load(f_site); E0 = E0'; % Site energies [cm-1]
-sigma = [150 60]; % Disorders (static & dynamic) [cm-1]
-tauc = [100 1000000]; % Correlation time [fs]
+sigma = [60 140]; % Disorders (static & dynamic) [cm-1]
+tauc = [150 1000000]; % Correlation time [fs]
 dt = 1; %Time step for trajectories [fs]
-N = length(E0); % Number of chromophores
-Nstep = 10001; % Number of time steps
-taudeph = 100; % Dephasing time [fs]
+Nstep = 20000; % Number of time steps
+taudeph = 150; % Dephasing time [fs]
 Tw = 0; % Waiting time for 2DES [fs]
 T = 300; % Temperature (K)
+
+E0 = load(f_site); % Site energies [cm-1]
+N = length(E0); % Number of chromophores
+maxfreq = max(E0) + 1000;
+minfreq = min(E0) - 1000;
 
 %% NISE input parameters
 % For translate between bin and txt
@@ -65,8 +69,8 @@ nise1D.Timestep = dt;
 nise1D.Trotter = 1;
 nise1D.Anharmonicity = 100;
 nise1D.Format = 'Dislin';
-nise1D.MinFrequencies = [14000 14000 14000];
-nise1D.MaxFrequencies = [16500 16500 16500];
+nise1D.MinFrequencies = [minfreq minfreq minfreq];
+nise1D.MaxFrequencies = [maxfreq maxfreq maxfreq];
 nise1D.Technique = 'Absorption';
 nise1D.FFT = 2048;
 nise1D.RunTimes = [1.5*round(taudeph/dt) 0 1.5*round(taudeph/dt)];
@@ -118,11 +122,11 @@ niseMC = nise1D;
 niseMC.Technique = 'MCFRET';
 
 %% Generate energy trajectories
-dE = odam_trajectory(E0,0:dt:Nstep,sigma,1./tauc); % Energy fluctuation [cm-1]
+dE = odam_trajectory(E0,0:dt:Nstep*dt,sigma,1./tauc); % Energy fluctuation [cm-1]
 E = E0 + dE;
 
 %% Calculate coupling
-atom = import_pdb(f_pdb,'C');
+atom = import_pdb(f_pdb{1},f_pdb{2});
 C = calc_coupling(atom);
 mu = C.Dvec.*sqrt(C.D);
 box = [max([atom.x])-min([atom.x]), ...
@@ -186,17 +190,13 @@ writeinput(niseLum,f_iLum);
 
 %% If NISE is installed, run the calculations
 niseDir = '~/NISE_2017/bin/';
-runornot = questdlg('Run NISE calculation? It may take a while.');
 if exist(niseDir,'dir') && isunix
-    if strcmp(runornot,'Yes')
-        system(sprintf('%s%s %s',niseDir,'translate',f_iTra));
-        system(sprintf('%s%s %s',niseDir,'NISE',f_i1D));
-        system(sprintf('%s%s %s',niseDir,'NISE',f_iLum));
-        system(sprintf('%s%s %s',niseDir,'NISE',f_iCD));
-        system(sprintf('%s%s %s',niseDir,'NISE',f_iLD));
-        system(sprintf('%s%s %s',niseDir,'NISE',f_i2D));
-        system(sprintf('%s%s %s',niseDir,'2DFFT',f_i2D));
-    end
-else
-    fprintf('Please install NISE. Go to: https://github.com/GHlacour/NISE_2017\n');
+    runornot = questdlg('Run NISE calculation? It may take a while.');
+    system(sprintf('%s%s %s',niseDir,'translate',f_iTra));
+    system(sprintf('%s%s %s',niseDir,'NISE',f_i1D));
+    system(sprintf('%s%s %s',niseDir,'NISE',f_iLum));
+    system(sprintf('%s%s %s',niseDir,'NISE',f_iCD));
+    system(sprintf('%s%s %s',niseDir,'NISE',f_iLD));
+    system(sprintf('%s%s %s',niseDir,'NISE',f_i2D));
+    system(sprintf('%s%s %s',niseDir,'2DFFT',f_i2D));
 end
