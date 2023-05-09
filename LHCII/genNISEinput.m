@@ -11,7 +11,7 @@
 % - NISE input files (translation, Absorption, 2DES, ...)
 
 %% Files
-f_pdb = {fullfile('pdb','Chlab.pdb'),'Y'}; % Structure pdb
+f_pdb = {fullfile('pdb','Chlab.pdb'),'Y'}; % Structure pdb and chain name
 f_site = fullfile('Energy','Chlab.txt'); % Site energies
 
 f_ham = 'Energy'; % Hamiltonian input for NISE
@@ -35,7 +35,7 @@ sigma = [140 60]; % Disorders (dynamic & static) [cm-1]
 tauc = [150 10000]; % Correlation time [fs]
 dt = 2; %Time step for trajectories [fs]
 Nstep = 200000; % Number of time steps
-taudeph = 150; % Dephasing time [fs]
+taudeph = 150; % Pure Dephasing time [fs]
 Tw = 0; % Waiting time for 2DES [fs]
 T = 300; % Temperature (K)
 
@@ -43,8 +43,45 @@ E0 = load(f_site); % Site energies [cm-1]
 N = length(E0); % Number of chromophores
 maxfreq = max(E0) + 1000;
 minfreq = min(E0) - 1000;
+t1 = 0:dt:Nstep*dt; % Time axis for trajectories
 
-%% NISE input parameters
+%% Generate energy trajectories
+dE = odam_trajectory(E0,t1,sigma,1./tauc); % Energy fluctuation [cm-1]
+E = E0 + dE;
+fprintf('Trajectory calculated\n');
+
+%% Calculate coupling
+atom = import_pdb(f_pdb{1},f_pdb{2});
+C = calc_coupling(atom);
+mu = C.Dvec.*sqrt(C.D);
+box = [max([atom.x])-min([atom.x]), ...
+    max([atom.y])-min([atom.y]), ...
+    max([atom.z])-min([atom.z])];
+boxmax = ceil(max(box)); % Cubic box size containing all atoms
+fprintf('Coupling calculated\n');
+
+%% Write to files
+fprintf('Write to files...\n');
+% Generate energy and dipole
+fid_ham = fopen([f_ham '.bin'],'w');
+fid_dp = fopen([f_dp '.bin'],'w');
+fid_pos = fopen([f_pos '.bin'],'w');
+for nt = 1:Nstep
+    H = tril(diag(E(:,nt))+C.V);
+    H = H(:);
+    H(H==0) = []; % Convert to one line
+    fwrite(fid_ham, [nt; H],'float32');
+    fwrite(fid_dp, [nt; mu(:)],'float32');
+    fwrite(fid_pos,[boxmax; C.Center(:)],'float32');
+end
+fclose(fid_ham);
+fprintf('Hamiltonian file generated\n');
+fclose(fid_dp);
+fprintf('Dipole file generated\n');
+fclose(fid_pos);
+fprintf('Position file generated\n');
+
+%% Generate NISE input files
 % For translate between bin and txt
 niseTra.InputEnergy = [f_ham '.bin'];
 niseTra.InputDipole = [f_dp '.bin'];
@@ -74,13 +111,13 @@ nise1D.MinFrequencies = [minfreq minfreq minfreq];
 nise1D.MaxFrequencies = [maxfreq maxfreq maxfreq];
 nise1D.Technique = 'Absorption';
 nise1D.FFT = 2048;
-nise1D.RunTimes = [1.5*round(taudeph/dt) 0 1.5*round(taudeph/dt)];
+nise1D.RunTimes = [round(1.5*taudeph/dt) 0 round(1.5*taudeph/dt)];
 nise1D.Singles = N;
 
 % NISE input for 2D
 nise2D = nise1D;
 nise2D.Technique = '2DUVvis';
-nise2D.RunTimes = [1.5*round(taudeph/dt) Tw 1.5*round(taudeph/dt)];
+nise2D.RunTimes = [round(1.5*taudeph/dt) Tw round(1.5*taudeph/dt)];
 
 % NISE input for CG-2D
 niseCG2D = nise2D;
@@ -124,74 +161,15 @@ niseMC.Technique = 'MCFRET';
 niseMC.Project = '';
 niseMC.Sites = sprintf('%d\n',[N 0:N-1]);
 
-%% Generate energy trajectories
-dE = odam_trajectory(E0,0:dt:Nstep*dt,sigma,1./tauc); % Energy fluctuation [cm-1]
-E = E0 + dE;
-
-%% Calculate coupling
-atom = import_pdb(f_pdb{1},f_pdb{2});
-C = calc_coupling(atom);
-mu = C.Dvec.*sqrt(C.D);
-box = [max([atom.x])-min([atom.x]), ...
-    max([atom.y])-min([atom.y]), ...
-    max([atom.z])-min([atom.z])];
-boxmax = ceil(max(box)); % Cubic box size containing all atoms
-
-%% Write to files
-% Generate energy and dipole
-fid_ham = fopen([f_ham '.bin'],'w');
-fid_dp = fopen([f_dp '.bin'],'w');
-fid_pos = fopen([f_pos '.bin'],'w');
-for nt = 1:Nstep
-    H = tril(diag(E(:,nt))+C.V);
-    H = H(:);
-    H(H==0) = []; % Convert to one line
-    %     fprintf(fid_ham,'%d %f',nt,H); % write to Hamiltonian file
-    %     fprintf(fid_ham,'\n');
-    %     fprintf(fid_dp,'%d %f',nt, mu); % write to dipole file
-    %     fprintf(fid_dp,'\n');
-    %     fprintf(fid_pos,'%d %f',boxmax, C.Center); % write to position file
-    %     fprintf(fid_pos,'\n');
-    fwrite(fid_ham, [nt; H],'float32');
-    fwrite(fid_dp, [nt; mu(:)],'float32');
-    fwrite(fid_pos,[boxmax; C.Center(:)],'float32');
-end
-fclose(fid_ham);
-fprintf('Hamiltonian file generated\n');
-fclose(fid_dp);
-fprintf('Dipole file generated\n');
-fclose(fid_pos);
-fprintf('Position file generated\n');
-
-% Generate NISE input files
-% TXT to BIN Translation
 writeinput(niseTra,f_iTra);
-
-% Absorption
 writeinput(nise1D,f_i1D);
-
-% 2D
 writeinput(nise2D,f_i2D);
-
-% Dif
 writeinput(niseDif,f_iDif);
-
-% Pop
 writeinput(nisePop,f_iPop);
-
-% Analyse
 writeinput(niseAnalyse,f_iAnalyse);
-
-% LD
 writeinput(niseLD,f_iLD);
-
-% CD
 writeinput(niseCD,f_iCD);
-
-% Luminesence
 writeinput(niseLum,f_iLum);
-
-% MCFRET
 writeinput(niseMC,f_MCFRET);
 
 %% If NISE is installed, run the calculations
