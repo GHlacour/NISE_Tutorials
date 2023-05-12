@@ -3,7 +3,7 @@
 % Linear abs % Luminescence
 if isfile('Absorption.dat')
     datlin = load('Absorption.dat');
-    figure; plot(datlin(:,1),normalizing(datlin(:,2),'scale'));
+    figure; plot(datlin(:,1),datlin(:,2));
     title('Absorption & Luminescence');
     xlabel('Wavenumber (cm^{-1})');
     ylabel('Intensity (au)');
@@ -11,7 +11,7 @@ end
 if isfile('Luminescence.dat')
     hold on;
     datlum = load('Luminescence.dat');
-    plot(datlum(:,1),normalizing(datlum(:,2),'scale'));
+    plot(datlum(:,1),datlum(:,2));
     title('Absorption & Luminescence');
     xlabel('Wavenumber (cm^{-1})');
     ylabel('Intensity (au)');

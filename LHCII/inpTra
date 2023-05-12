@@ -5,6 +5,6 @@ OutputDipole Dipole.txt
 Singles 2
 Doubles 0
 Skip Doubles
-Length 20000
+Length 200000
 InputFormat GROBIN
 OutputFormat GROASC

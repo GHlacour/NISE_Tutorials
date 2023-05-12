@@ -3,10 +3,10 @@ Couplingcut 0
 Threshold 0.001
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
-Length 20000
+Length 200000
 Samplerate 20
 Lifetime 150
-Timestep 1
+Timestep 5
 Trotter 1
 Anharmonicity 100
 Format Dislin
@@ -14,5 +14,5 @@ MinFrequencies 13790  13790  13790
 MaxFrequencies 16215  16215  16215
 Technique LD
 FFT 2048
-RunTimes 225    0  225
+RunTimes 60   0  60
 Singles 2

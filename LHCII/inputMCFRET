@@ -1,4 +1,4 @@
-Propagation Sparse
+Propagation Coupling
 Couplingcut 0
 Threshold 0.001
 Hamiltonianfile Energy.bin
@@ -12,7 +12,12 @@ Anharmonicity 100
 Format Dislin
 MinFrequencies 13790  13790  13790
 MaxFrequencies 16215  16215  16215
-Technique Pop
+Technique MCFRET
 FFT 2048
 RunTimes 60   0  60
 Singles 2
+Project 
+Sites 2
+0
+1
+

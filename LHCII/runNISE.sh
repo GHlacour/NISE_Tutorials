@@ -7,4 +7,6 @@
 #SBATCH --mem-per-cpu=2000
 
 module load foss
-~/git-lacourjansenlab/NISE_2017/bin/NISE inputMCFRET
+module load MATLAB
+matlab -nodisplay < genNISEinput.m
+~/git-lacourjansenlab/NISE_2017/bin/NISE input1D

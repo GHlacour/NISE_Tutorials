@@ -1,18 +1,19 @@
-Propagation Sparse
+Propagation Coupling
 Couplingcut 0
 Threshold 0.001
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
-Length 200000
+Length 2000
 Samplerate 20
 Lifetime 150
-Timestep 5
+Timestep 2
 Trotter 1
 Anharmonicity 100
 Format Dislin
-MinFrequencies 13790  13790  13790
-MaxFrequencies 16215  16215  16215
-Technique Pop
+MinFrequencies 13790 13790 13790
+MaxFrequencies 16215 16215 16215
+Technique CG_2DES
 FFT 2048
-RunTimes 60   0  60
+RunTimes 112 0 112
 Singles 2
+Runtimes 112 0 112

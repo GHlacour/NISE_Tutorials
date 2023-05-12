@@ -31,9 +31,9 @@ f_iDOS = 'inputDOS'; % NISE density of states
 f_MCFRET = 'inputMCFRET'; % NISE MCFRET rates
 
 %% Parameters
-sigma = [140 60]; % Disorders (dynamic & static) [cm-1]
-tauc = [150 10000]; % Correlation time [fs]
-dt = 2; %Time step for trajectories [fs]
+sigma = [130 0]; % Disorders (dynamic & static) [cm-1]
+tauc = [50 10000]; % Correlation time [fs]
+dt = 5; %Time step for trajectories [fs]
 Nstep = 200000; % Number of time steps
 taudeph = 150; % Pure Dephasing time [fs]
 Tw = 0; % Waiting time for 2DES [fs]
@@ -111,13 +111,13 @@ nise1D.MinFrequencies = [minfreq minfreq minfreq];
 nise1D.MaxFrequencies = [maxfreq maxfreq maxfreq];
 nise1D.Technique = 'Absorption';
 nise1D.FFT = 2048;
-nise1D.RunTimes = [round(1.5*taudeph/dt) 0 round(1.5*taudeph/dt)];
+nise1D.RunTimes = [round(2*taudeph/dt) 0 round(2*taudeph/dt)];
 nise1D.Singles = N;
 
 % NISE input for 2D
 nise2D = nise1D;
 nise2D.Technique = '2DUVvis';
-nise2D.RunTimes = [round(1.5*taudeph/dt) Tw round(1.5*taudeph/dt)];
+nise2D.RunTimes = [round(2*taudeph/dt) Tw round(2*taudeph/dt)];
 
 % NISE input for CG-2D
 niseCG2D = nise2D;
