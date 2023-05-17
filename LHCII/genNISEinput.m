@@ -31,19 +31,21 @@ f_iDOS = 'inputDOS'; % NISE density of states
 f_MCFRET = 'inputMCFRET'; % NISE MCFRET rates
 
 %% Parameters
-sigma = [130 0]; % Disorders (dynamic & static) [cm-1]
+sigma = [128 0]; % Disorders (dynamic & static) [cm-1]
 tauc = [50 10000]; % Correlation time [fs]
 dt = 5; %Time step for trajectories [fs]
-Nstep = 200000; % Number of time steps
+Nstep = 1000000; % Number of time steps
 taudeph = 150; % Pure Dephasing time [fs]
 Tw = 0; % Waiting time for 2DES [fs]
 T = 300; % Temperature (K)
+fastest_tau = min([tauc taudeph]); % Find fastest decay time
 
 E0 = load(f_site); % Site energies [cm-1]
 N = length(E0); % Number of chromophores
 maxfreq = max(E0) + 1000;
 minfreq = min(E0) - 1000;
-t1 = 0:dt:Nstep*dt; % Time axis for trajectories
+t1 = 0:dt:(Nstep-1)*dt; % Time axis for trajectories
+sigma = repmat(sigma,N,1);
 
 %% Generate energy trajectories
 dE = odam_trajectory(E0,t1,sigma,1./tauc); % Energy fluctuation [cm-1]
@@ -61,25 +63,34 @@ boxmax = ceil(max(box)); % Cubic box size containing all atoms
 fprintf('Coupling calculated\n');
 
 %% Write to files
+
 fprintf('Write to files...\n');
 % Generate energy and dipole
 fid_ham = fopen([f_ham '.bin'],'w');
 fid_dp = fopen([f_dp '.bin'],'w');
 fid_pos = fopen([f_pos '.bin'],'w');
+
+Hmask = true(N);
+Hmask = tril(Hmask); % Create a filter to get lower triagular elements
 for nt = 1:Nstep
-    H = tril(diag(E(:,nt))+C.V);
-    H = H(:);
-    H(H==0) = []; % Convert to one line
+    H = diag(E(:,nt))+C.V;
+    H = H(Hmask);
     fwrite(fid_ham, [nt; H],'float32');
     fwrite(fid_dp, [nt; mu(:)],'float32');
     fwrite(fid_pos,[boxmax; C.Center(:)],'float32');
 end
+
 fclose(fid_ham);
-fprintf('Hamiltonian file generated\n');
+format shortG;
+disp('Hamiltonian file generated');
+disp('Last Hamiltonian:');
+disp(diag(E(:,end))+C.V);
+disp('Triangular Hamiltonian:');
+disp(H');
 fclose(fid_dp);
-fprintf('Dipole file generated\n');
+disp('Dipole file generated');
 fclose(fid_pos);
-fprintf('Position file generated\n');
+disp('Position file generated');
 
 %% Generate NISE input files
 % For translate between bin and txt
@@ -111,13 +122,13 @@ nise1D.MinFrequencies = [minfreq minfreq minfreq];
 nise1D.MaxFrequencies = [maxfreq maxfreq maxfreq];
 nise1D.Technique = 'Absorption';
 nise1D.FFT = 2048;
-nise1D.RunTimes = [round(2*taudeph/dt) 0 round(2*taudeph/dt)];
+nise1D.RunTimes = [round(10*fastest_tau/dt) 0 round(10*fastest_tau/dt)];
 nise1D.Singles = N;
 
 % NISE input for 2D
 nise2D = nise1D;
 nise2D.Technique = '2DUVvis';
-nise2D.RunTimes = [round(2*taudeph/dt) Tw round(2*taudeph/dt)];
+nise2D.RunTimes = [round(10*fastest_tau/dt) Tw/dt round(10*fastest_tau/dt)];
 
 % NISE input for CG-2D
 niseCG2D = nise2D;
