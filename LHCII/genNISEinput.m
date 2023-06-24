@@ -11,9 +11,9 @@
 % - dipole trajectories
 % - NISE input files (translation, Absorption, 2DES, ...)
 
-%% Files
-f_pdb = {fullfile('pdb','5xnm.pdb'),'CY'}; % Structure pdb and chain name
-f_site = fullfile('Energy','chainYC.txt'); % Site energies
+%% Files and parameters
+f_pdb = {fullfile('pdb','5xnm.pdb'),'Y'}; % Structure pdb and chain name
+f_site = fullfile('Energy','LHCIImon.txt'); % Site energies
 
 f_ham = 'Energy'; % Hamiltonian input for NISE
 f_dp = 'Dipole'; % Dipole input for NISE
@@ -31,11 +31,11 @@ f_iLD = 'inputLD'; % NISE linear dichroism
 f_iDOS = 'inputDOS'; % NISE density of states
 f_MCFRET = 'inputMCFRET'; % NISE MCFRET rates
 
-%% Parameters
+% Parameters
 sigma = [180 60] % Disorders (dynamic & static) [cm-1]
 tauc = [150 10000] % Correlation time [fs]
 dt = 1 %Time step for trajectories [fs]
-Nstep = 10000 % Number of time steps
+Nstep = 300000 % Number of time steps
 taudeph = 75 % Pure Dephasing time [fs]
 Tw = 0 % Waiting time for 2DES [fs]
 T = 300 % Temperature (K)
@@ -44,6 +44,7 @@ freq_margin = 1000 % Frequency axis = [minfreq-margin maxfreq+margin] [cm-1]
 cluster_coup_cut = 20 % Coupling cutoff for clustering [cm-1]
 cluster_freq_cut = 300 % Frequency cutoff for clustering [cm-1]
 
+%% Initializing variables
 E0 = load(f_site); % Site energies [cm-1]
 fprintf('Energy loaded from %s\n',f_site);
 N = length(E0); % Number of chromophores
