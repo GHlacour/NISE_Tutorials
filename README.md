@@ -33,3 +33,4 @@ The folder LHCII contains the files needed for the LHCII light-harvesting system
 3. The code *plotNISE.m* can be used to plot basic spectra.
 
 Alternatively, the script *runNISE.sh* can be used to automatically submit steps 1 and 2 to the cluster.
+The codes can also be used to calculate for other light-harvesting systems, provided that the corresponding site energies and pdb structure are supplied in the "Energy" and "pdb" folders.
