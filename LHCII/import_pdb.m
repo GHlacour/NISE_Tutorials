@@ -79,4 +79,4 @@ end
 
 nAtoms=size(atom,2);
 
-disp('.pdb file imported')
+fprintf('.pdb file imported from %s\n',filename)

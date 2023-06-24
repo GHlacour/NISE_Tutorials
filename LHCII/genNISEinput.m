@@ -1,18 +1,19 @@
 % This script generates the input files calculating linear abs for NISE
 % It will also run the NISE calculations provided that the correct path to
-% NISE program is ndicated.
+% NISE program is indicated.
 
 % Input:
 % - Site energies (text)
 % - Protein structure
+% - Several parameters
 % Output:
 % - energy trajectories
 % - dipole trajectories
 % - NISE input files (translation, Absorption, 2DES, ...)
 
 %% Files
-f_pdb = {fullfile('pdb','Chlab.pdb'),'Y'}; % Structure pdb and chain name
-f_site = fullfile('Energy','Chlab.txt'); % Site energies
+f_pdb = {fullfile('pdb','5xnm.pdb'),'CY'}; % Structure pdb and chain name
+f_site = fullfile('Energy','chainYC.txt'); % Site energies
 
 f_ham = 'Energy'; % Hamiltonian input for NISE
 f_dp = 'Dipole'; % Dipole input for NISE
@@ -31,19 +32,23 @@ f_iDOS = 'inputDOS'; % NISE density of states
 f_MCFRET = 'inputMCFRET'; % NISE MCFRET rates
 
 %% Parameters
-sigma = [128 0]; % Disorders (dynamic & static) [cm-1]
-tauc = [50 10000]; % Correlation time [fs]
-dt = 5; %Time step for trajectories [fs]
-Nstep = 1000000; % Number of time steps
-taudeph = 150; % Pure Dephasing time [fs]
-Tw = 0; % Waiting time for 2DES [fs]
-T = 300; % Temperature (K)
-fastest_tau = min([tauc taudeph]); % Find fastest decay time
+sigma = [180 60] % Disorders (dynamic & static) [cm-1]
+tauc = [150 10000] % Correlation time [fs]
+dt = 1 %Time step for trajectories [fs]
+Nstep = 10000 % Number of time steps
+taudeph = 75 % Pure Dephasing time [fs]
+Tw = 0 % Waiting time for 2DES [fs]
+T = 300 % Temperature (K)
+tmax = 3*min([tauc taudeph]) % t1 and t3 max [fs]
+freq_margin = 1000 % Frequency axis = [minfreq-margin maxfreq+margin] [cm-1]
+cluster_coup_cut = 20 % Coupling cutoff for clustering [cm-1]
+cluster_freq_cut = 300 % Frequency cutoff for clustering [cm-1]
 
 E0 = load(f_site); % Site energies [cm-1]
+fprintf('Energy loaded from %s\n',f_site);
 N = length(E0); % Number of chromophores
-maxfreq = max(E0) + 1000;
-minfreq = min(E0) - 1000;
+maxfreq = max(E0) + freq_margin;
+minfreq = min(E0) - freq_margin;
 t1 = 0:dt:(Nstep-1)*dt; % Time axis for trajectories
 sigma = repmat(sigma,N,1);
 
@@ -61,10 +66,12 @@ box = [max([atom.x])-min([atom.x]), ...
     max([atom.z])-min([atom.z])];
 boxmax = ceil(max(box)); % Cubic box size containing all atoms
 fprintf('Coupling calculated\n');
+cluster_index = cluster_by_coupling(C.V,cluster_coup_cut,E0,cluster_freq_cut)';
 
 %% Write to files
 
 fprintf('Write to files...\n');
+writematrix(cluster_index,'cluster.txt');
 % Generate energy and dipole
 fid_ham = fopen([f_ham '.bin'],'w');
 fid_dp = fopen([f_dp '.bin'],'w');
@@ -83,10 +90,10 @@ end
 fclose(fid_ham);
 format shortG;
 disp('Hamiltonian file generated');
-disp('Last Hamiltonian:');
-disp(diag(E(:,end))+C.V);
-disp('Triangular Hamiltonian:');
-disp(H');
+% disp('Last Hamiltonian:');
+% disp(diag(E(:,end))+C.V);
+% disp('Triangular Hamiltonian:');
+% disp(H');
 fclose(fid_dp);
 disp('Dipole file generated');
 fclose(fid_pos);
@@ -122,13 +129,13 @@ nise1D.MinFrequencies = [minfreq minfreq minfreq];
 nise1D.MaxFrequencies = [maxfreq maxfreq maxfreq];
 nise1D.Technique = 'Absorption';
 nise1D.FFT = 2048;
-nise1D.RunTimes = [round(10*fastest_tau/dt) 0 round(10*fastest_tau/dt)];
+nise1D.RunTimes = [round(tmax/dt) 0 round(tmax/dt)];
 nise1D.Singles = N;
 
 % NISE input for 2D
 nise2D = nise1D;
 nise2D.Technique = '2DUVvis';
-nise2D.RunTimes = [round(10*fastest_tau/dt) Tw/dt round(10*fastest_tau/dt)];
+nise2D.RunTimes = [round(tmax/dt) Tw/dt round(tmax/dt)];
 
 % NISE input for CG-2D
 niseCG2D = nise2D;
@@ -169,8 +176,10 @@ niseDOS.Technique = 'DOS';
 % NSIE input for MCFRET
 niseMC = nise1D;
 niseMC.Technique = 'MCFRET';
+niseMC.Temperature = T;
 niseMC.Project = '';
-niseMC.Sites = sprintf('%d\n',[N 0:N-1]);
+niseMC.Sites = sprintf('%d\n',[N cluster_index]);
+% niseMC.Sites = sprintf('%d\n',[N 0 1]);
 
 writeinput(niseTra,f_iTra);
 writeinput(nise1D,f_i1D);
