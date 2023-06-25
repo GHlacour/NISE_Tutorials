@@ -11,6 +11,9 @@ from matplotlib.figure import Figure
 icmstr="cm\N{SUPERSCRIPT MINUS}\N{SUPERSCRIPT ONE}"
 degree="\N{DEGREE SIGN}"
 kappastr="\u03BA"
+icmstr="cm-1"
+#degree="o"
+#kappastr="k"
 
 def save():
     energy=open("Energy.txt","w")

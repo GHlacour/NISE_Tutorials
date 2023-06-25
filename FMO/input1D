@@ -5,23 +5,21 @@ Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
 Anharmonicfile Anharmonicity.bin
 Overtonedipolefile OvertoneDipole.bin
-Length 200000
+Length 1000000
 Samplerate 20
-Lifetime 300
-Timestep 3
+Lifetime 2500
+Timestep 5
 Trotter 1
-ImaginaryTimesteps 4
 Anharmonicity 100
 Format Dislin
-MinFrequencies 11000 11000 11100
+MinFrequencies 11500 11500 11500
 MaxFrequencies 13000 13000 13000
-Technique Luminescence
-Temperature 300
-FFT 2048
+Technique Absorption
+#FFT 128
 #BeginPoint 0
 #EndPoint 1
-RunTimes 128 0 128
-Singles 27
+RunTimes 200 0 200
+Singles 7
 #Project
 Sites 1
 0

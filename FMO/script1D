@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#SBATCH --job-name NISE3
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=0-02:00:00
+
+#module load foss
+#module load 2023.01 StdEnv
+#module load Anaconda3
+#python FMO.py
+
+module load intel FFTW
+
+#setenv OMP_NUM_THREADS 1
+#setenv MKL_NUM_THREADS 1
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+
+#echo $TMPDIR
+#cd $TMPDIR
+
+time ~/git/NISE_MCFRET/NISE_2017/bin/NISE input1D
+
+#cp *.log $WD
+#cp *.dat $WD

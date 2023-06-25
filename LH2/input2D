@@ -18,7 +18,7 @@ Technique 2DUVvis
 FFT 2048
 #BeginPoint 0
 #EndPoint 1
-RunTimes 64 0 64
+RunTimes 64 64 64
 Singles 27
 #Project
 Sites 1
