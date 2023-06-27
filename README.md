@@ -26,5 +26,12 @@ The Hamiltonian trajectory is created from the 1kzu.pdb protein data bank file.
 
 Examples are also given for calculating the couplings on the fly with the transition-dipole (TDC) and extended-dipole (EDC) coupling schemes. This reduce the size of the file needed to store the Hamiltonian considerably as only the diagonal part is stored. The couplings are generated from the dipoles and positions of magnesium atoms in the TDC case and the position of the NB and ND in the EDC case.
 
+### LHCII
+The folder LHCII contains the files needed for the LHCII light-harvesting system. The codes are mainly written in MATLAB. A python version is also available, but with more limited functionality.
+1. Run *genNISEinput.m* using MATLAB. The input files for NISE will be generated. Parameters can be adjusted in the "Files and Parameters" section.
+2. Run NISE calculation for the desired techniques (Abs, Lum, 2D, etc.) using the corresponding input files (input1D, inputLum, input2D, etc.).
+3. The code *plotNISE.m* can be used to plot basic spectra.
 
+Alternatively, the script *runNISE.sh* can be used to automatically submit steps 1 and 2 to the cluster (if neccessary, adjust the NISE installation path).
 
+The codes can also be used to calculate for other light-harvesting systems, provided that the corresponding site energies and pdb structure are supplied in the "Energy" and "pdb" folders.
