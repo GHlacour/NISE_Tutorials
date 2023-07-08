@@ -16,12 +16,11 @@ MinFrequencies 11500 11500 11500
 MaxFrequencies 13000 13000 13000
 Technique MCFRET
 #FFT 128
-Temperature 77
+Temperature 7700000
 #BeginPoint 0
 #EndPoint 1
 RunTimes 100 0 100
 Singles 7
 Project
 Sites 7
-0 1 2 3 4 5 6
 2 2 0 1 3 3 1

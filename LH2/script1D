@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name NISE3
 #SBATCH --nodes=1
-#SBATCH --ntasks=8
+#SBATCH --ntasks=1
 #SBATCH --time=0-01:00:00
 
 #module load foss
 module load 2023.01 StdEnv
 module load intel/2022b FFTW
 
-setenv OMP_NUM_THREADS 8
+setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
 setenv WD $SLURM_SUBMIT_DIR
