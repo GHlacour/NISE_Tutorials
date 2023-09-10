@@ -1,0 +1,10 @@
+InputEnergy Energy.bin
+InputDipole Dipole.bin
+OutputEnergy Energy.txt
+OutputDipole Dipole.txt
+Singles 14
+Doubles 0
+Skip Doubles
+Length 300000
+InputFormat GROBIN
+OutputFormat GROASC

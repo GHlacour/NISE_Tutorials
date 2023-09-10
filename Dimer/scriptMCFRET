@@ -1,0 +1,15 @@
+#!/bin/csh
+#SBATCH --job-name NISE3
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+
+module load intel FFTW
+setenv OMP_NUM_THREADS 1
+setenv MKL_NUM_THREADS 1
+
+#setenv WD $SLURM_SUBMIT_DIR
+
+# Run program in directory from where it was submitted
+#~/git/NISE_2017/bin/translate inpTra
+time ~/git/NISE_MCFRET/NISE_2017/bin/NISE inputMCFRET
+
