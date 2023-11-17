@@ -10,16 +10,16 @@ Samplerate 100
 Lifetime 1000
 Timestep 10
 Trotter 1
-Temperature 1000000
 Anharmonicity 100
 Format Dislin
-MinFrequencies 900 1100 1100
+MinFrequencies 1100 1100 1100
 MaxFrequencies 1300 1300 1300
-Technique MCFRET
+Technique Correlation
+FFT 2048
 #BeginPoint 0
 #EndPoint 1
 RunTimes 256 0 256
 Singles 2
-Project
-Sites 2
-0 1
+#Project
+Sites 1
+0

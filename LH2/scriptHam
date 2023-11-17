@@ -2,11 +2,11 @@
 #SBATCH --job-name NISE3
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-01:30:00
 
 #module load foss
 module load 2023.01 StdEnv
-module load intel/2022b FFTW
+module load Anaconda3
 
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
@@ -16,7 +16,7 @@ setenv WD $SLURM_SUBMIT_DIR
 #echo $TMPDIR
 #cd $TMPDIR
 
-time ~/git/NISE_2017/bin/NISE input1D
+python GenHam.py
 
 #cp *.log $WD
 #cp *.dat $WD

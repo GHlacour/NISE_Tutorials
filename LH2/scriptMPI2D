@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name NISE-Xlong
-#SBATCH --ntasks=80
+#SBATCH --ntasks=8
 #SBATCH --cpus-per-task=16
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-02:00:00
 #SBATCH --partition=regularshort
 #SBATCH --mem=6000
 
@@ -14,14 +14,14 @@ cd $SLURM_SUBMIT_DIR
 # You may need to change the module name
 #module load foss/2019a
 #module load 2023.01 StdEnv
-module load intel
+module load intel FFTW
 #/2022b FFTW
 #module load foss
 
 # It is assumed that the bin files are already in your home
 # You may have to change the location of the programme
 #time srun ~/git/NISE_2017/bin/NISE input2D
-mpirun ~/git/NISE_2017/bin/NISE input2D
+mpirun ~/git/NISE_MCFRET/NISE_2017/bin/NISE input2D
 
 # This script does not perform the 2DFFT you can do that after the calculation finished
 # ~/git/NISE_2017/bin/2DFFT input2D

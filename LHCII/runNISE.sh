@@ -11,3 +11,4 @@ module load MATLAB
 matlab -nodisplay < genNISEinput.m
 ~/git/NISE_MCFRET/NISE_2017/bin/NISE input1D
 ~/git/NISE_MCFRET/NISE_2017/bin/NISE inputMCFRET
+~/git/NISE_MCFRET/NISE_2017/bin/NISE inputAnalyse

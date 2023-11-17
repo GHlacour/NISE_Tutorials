@@ -1,6 +1,6 @@
 Propagation Coupling
 Couplingcut 0
-Threshold 0.35
+Threshold 0.001
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
 Length 300000
@@ -12,7 +12,7 @@ Anharmonicity 100
 Format Dislin
 MinFrequencies 13790  13790  13790
 MaxFrequencies 16475  16475  16475
-Technique Analyse
+Technique LD
 FFT 2048
 RunTimes 225    0  225
 Singles 14

@@ -6,7 +6,7 @@ Dipolefile Dipole.bin
 Anharmonicfile Anharmonicity.bin
 Overtonedipolefile OvertoneDipole.bin
 Length 1000000
-Samplerate 50
+Samplerate 500
 Lifetime 2500
 Timestep 5
 Trotter 1
@@ -16,7 +16,7 @@ MinFrequencies 11500 11500 11500
 MaxFrequencies 13000 13000 13000
 Technique MCFRET
 #FFT 128
-Temperature 7700000
+Temperature 77
 #BeginPoint 0
 #EndPoint 1
 RunTimes 100 0 100

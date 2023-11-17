@@ -6,7 +6,7 @@ Dipolefile Dipole.bin
 Anharmonicfile Anharmonicity.bin
 Overtonedipolefile OvertoneDipole.bin
 Length 200000
-Samplerate 200
+Samplerate 2000
 Lifetime 300
 Timestep 3
 Trotter 1
@@ -14,11 +14,11 @@ Anharmonicity 100
 Format Dislin
 MinFrequencies 11000 11000 11100
 MaxFrequencies 13000 13000 13000
-Technique MCFRET
-Temperature 300
+Technique MCFRET-Rate
+Temperature 10000000
 FFT 2048
-BeginPoint 0
-EndPoint 1
+#BeginPoint 0
+#EndPoint 1
 RunTimes 128 128 128
 Singles 27
 Project

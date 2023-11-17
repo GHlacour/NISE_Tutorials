@@ -3,6 +3,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 
+module avail
+module load 2023.01 StdEnv
 module load intel FFTW
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1

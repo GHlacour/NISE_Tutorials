@@ -9,12 +9,12 @@ plt.rcParams['ytick.major.width']=2
 plt.rcParams['xtick.direction']='in'
 plt.rcParams['ytick.direction']='in'
 
-Data = np.loadtxt('RateFile.dat')
-DataOrg=np.loadtxt('RateFile.dat_1')
+Data = np.loadtxt('PP.par.dat_mal')
+Data2= np.loadtxt('PP.par.dat')
 
 plt.plot(Data[:,0],Data[:,1])
-plt.plot(DataOrg[:,0],DataOrg[:,1],'--')
-plt.xlabel('Time [fs]',fontsize=16)
-plt.ylabel('RateRespinse [arb.u.]',fontsize=16)
+plt.plot(Data2[:,0],Data2[:,1],':')
+plt.xlabel('$\omega$ [cm$^{-1}$]',fontsize=16)
+plt.ylabel('Pump Probe [arb.u.]',fontsize=16)
 plt.show()
 
