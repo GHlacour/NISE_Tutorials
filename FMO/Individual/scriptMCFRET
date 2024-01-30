@@ -6,7 +6,6 @@
 
 #module load foss
 #module load 2023.01 StdEnv
-#module load foss
 module load intel FFTW
 
 export OMP_NUM_THREADS=1

@@ -6,7 +6,7 @@
 
 #module load foss
 module load 2023.01 StdEnv
-#module load intel/2022b FFTW
+module load intel/2022b FFTW
 module load foss
 
 setenv OMP_NUM_THREADS 1
@@ -17,7 +17,7 @@ setenv WD $SLURM_SUBMIT_DIR
 #echo $TMPDIR
 #cd $TMPDIR
 
-time ~/git/NISE_MCFRET3/NISE_2017/bin/NISE inputMCFRET
+time ~/git/NISE_MCFRET/NISE_2017/bin/NISE inputMCFRET
 
 #cp *.log $WD
 #cp *.dat $WD

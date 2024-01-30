@@ -18,7 +18,7 @@ ax.set_xlabel('Site',fontsize=16)
 ax.set_ylabel('Site',fontsize=16)
 ax.xaxis.set_ticks_position('bottom')
 fig.colorbar(caxes)
-plt.savefig('LocalDensityMatrix.png',dpi=400)
+plt.savefig('AbsoluteDensityMatrix.png',dpi=400)
 plt.show()
 
 Data = np.loadtxt('SpectralDensityMatrix.dat')

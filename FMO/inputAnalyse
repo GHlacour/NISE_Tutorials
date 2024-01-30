@@ -1,6 +1,6 @@
 Propagation Coupling
 Couplingcut 0
-Threshold 0.001
+Threshold 0.67
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
 Anharmonicfile Anharmonicity.bin
