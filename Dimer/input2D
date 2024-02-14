@@ -1,4 +1,4 @@
-Propagation Coupling
+Propagation RK4
 Couplingcut 0.1
 Threshold 0.001
 Hamiltonianfile Energy.bin
@@ -10,7 +10,7 @@ Length 100000
 Samplerate 100
 Lifetime 1000
 Timestep 10
-Trotter 5
+Trotter 1
 Anharmonicity 20
 Format Gnuplot
 #Format Dislin

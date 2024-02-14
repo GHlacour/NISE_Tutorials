@@ -1,4 +1,4 @@
-Propagation Sparse
+Propagation RK4
 Couplingcut 0
 Threshold 0.00
 Hamiltonianfile Energy.bin
@@ -6,7 +6,7 @@ Dipolefile Dipole.bin
 Anharmonicfile Anharmonicity.bin
 Overtonedipolefile OvertoneDipole.bin
 Length 100000
-Samplerate 10
+Samplerate 100
 Lifetime 1000
 Timestep 10
 Trotter 1

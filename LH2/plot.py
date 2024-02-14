@@ -17,8 +17,10 @@ plt.ylabel('Response function [arb.u.]',fontsize=16)
 plt.show()
 
 Data = np.loadtxt('Absorption.dat')
+DataO = np.loadtxt('Absorption.dat_org')
 
 plt.plot(Data[:,0],Data[:,1])
+plt.plot(DataO[:,0],DataO[:,1])
 plt.xlabel('$\omega$ [cm$^{-1}$]',fontsize=16)
 plt.ylabel('Absorption [arb.u.]',fontsize=16)
 plt.show()

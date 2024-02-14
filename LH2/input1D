@@ -9,7 +9,7 @@ Length 200000
 Samplerate 20
 Lifetime 300
 Timestep 3
-Trotter 1
+Trotter 2
 Anharmonicity 100
 Format Dislin
 MinFrequencies 11000 11000 11100

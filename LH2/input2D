@@ -1,4 +1,4 @@
-Propagation Coupling
+Propagation RK4
 Couplingcut 0
 Threshold 0.001
 Hamiltonianfile Energy.bin
