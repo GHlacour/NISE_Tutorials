@@ -64,7 +64,7 @@ input_ham = []
 coor = re.split(r"\s+", dataline[0].strip())
 np.array(coor,dtype=float)
 count = 0
-with open ('flu_energy.txt','a') as j:
+with open ('Energy.txt','a') as j:
     j.write(str(0))
     j.write("  ")
 
