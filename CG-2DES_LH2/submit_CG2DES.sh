@@ -6,4 +6,4 @@
 #SBATCH --mem=4000
 
 module load  foss
-/home3/p302934/NISE/NISE_2017/bin/NISE    inputCG2DES  #here you need to change the folder for NISE
+~/NISE/NISE_2017/bin/NISE    inputCG2DES  #here you need to change the folder for NISE
