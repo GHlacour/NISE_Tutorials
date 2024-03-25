@@ -12,7 +12,7 @@ def copy_to_multiple_lines(input_file, output_file, num_lines):
 
 # Usage
 input_file = 'Dipole_1_snapshot.txt'  # Replace with the name of your input file
-output_file = 'output.txt'  # Replace with the name of your output file
-num_lines = 100
+output_file = 'Dipole.txt'  # Replace with the name of your output file
+num_lines = 1000000
 
 copy_to_multiple_lines(input_file, output_file, num_lines)
