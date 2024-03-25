@@ -7,3 +7,4 @@
 
 module load  foss
 ~/NISE/NISE_2017/bin/NISE    inputCG2DES  #here you need to change the folder for NISE
+~/NISE/NISE_2017/bin/2DFFT inputCG2DES 
