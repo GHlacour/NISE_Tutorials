@@ -16,8 +16,8 @@ num_step = 1000000
 lambda1 = lambda2 = 1/150
 
 delta_t = 2
-sigma_D = 256
-sigma_A  = 169
+sigma_D = 256 #disorder magnitudes for B850
+sigma_A  = 169 #disorder magnitudes for B80
 sampleNo = 100000
 C = 2.99792458e-5
 mu = 0  #average value equal zero
@@ -44,7 +44,6 @@ def Noise_data(Initial_value,sigma,part_a, part_b):
 noise_total1  = []
 noise_total2  = []
 
-
 for i in range(num_D):
     Initial_value_delta_t2 =  np.random.normal(mu,sigma_D)
     noise2 = Noise_data(Initial_value_delta_t2,sigma_D,part_a_1, part_b_1)
@@ -56,7 +55,7 @@ for i in range(num_A):
     noise_total2.append(noise1)
 
 
-inputfile = open(r"input_055.txt" ,"r")
+inputfile = open(r"input_eng.txt" ,"r")
 dataline = inputfile.readlines()
 #line_num = 200
 sum_int  = 0
@@ -65,7 +64,7 @@ input_ham = []
 coor = re.split(r"\s+", dataline[0].strip())
 np.array(coor,dtype=float)
 count = 0
-with open ('update_ham.txt','a') as j:
+with open ('flu_energy.txt','a') as j:
     j.write(str(0))
     j.write("  ")
 
@@ -103,12 +102,8 @@ with open ('update_ham.txt','a') as j:
         coor[375] = float(coor[375]) + float(m25)
         coor[377] = float(coor[377]) + float(m26)
         count +=1
-        #j.write(str(count*delta_t))
         j.write(str(0))
         j.write("  ")
-
         j.write(" ".join(str(item) for item in coor))
         j.write("\n")
-
-
 j.close()
