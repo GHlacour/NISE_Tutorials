@@ -1,4 +1,4 @@
-### LHCII-CG2DES
+### LH2-CG2DES
 Here are the tutorials for the CG_2DES calculation with the LH2 system as an example. Here, provide one snapshot Hamiltonian and one snapshot dipole file, which you need as an input file to generate the input binary file for the NISE calculation. 
 1. First, you need to make sure that your system has installed Python and a required package, numpy. 
 2. Second, you just run the two files with Python: gen_energy_LH2.py and gen_dipole.py, and it generates Energy.txt and Dipole.txt files. 
