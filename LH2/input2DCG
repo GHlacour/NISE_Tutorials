@@ -19,7 +19,7 @@ Technique CG_2DES
 FFT 128
 #BeginPoint 0
 #EndPoint 1
-RunTimes 64 1 64
+RunTimes 64 0 64
 Singles 27
 PrintLevel 2
 Project
