@@ -1,22 +1,22 @@
 #!/bin/bash
 #SBATCH --job-name NISE3
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
+#SBATCH --ntasks=8
 #SBATCH --time=0-06:00:00
 
-#module load foss
+module load foss
 module load 2023.01 StdEnv
-module load intel FFTW
+#module load intel FFTW
 
-setenv OMP_NUM_THREADS 1
-setenv MKL_NUM_THREADS 1
+setenv OMP_NUM_THREADS 8
+setenv MKL_NUM_THREADS 8
 
 setenv WD $SLURM_SUBMIT_DIR
 
 #echo $TMPDIR
 #cd $TMPDIR
 
-time ~/git/NISE_Kai/NISE_2017/bin/NISE input2DCG
+time ~/git/NISE_CG2DES/NISE_2017/bin/NISE input2DCG
 ~/git/NISE_CG2DES/NISE_2017/bin/2DFFT input2DCG
 
 #cp *.log $WD
