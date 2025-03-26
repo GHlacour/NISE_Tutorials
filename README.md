@@ -43,3 +43,8 @@ Here are the tutorials for the CG_2DES calculation with the LH2 system as an exa
 3. Then you need to convert the txt file to the binary file in order to run the NISE calculation with just run the comment: ~/NISE/NISE_2017/bin/translate inpTra(Here you need to change the location to where your NISE program installed)
 4. Now, you can run the MC-FRET calculation to generate the rate matrix by submitting the submit_mcfret.sh file, which will generate the thermal corrected rate matrix without the thermal corrected matrix. You can choose which you want. You need to note that the rate matrix name for the CG-2DES calculation is "RateMatrix.dat." you need to make sure the name is correct for the next calculation.
 5. Finally, you can just submit the job and run the calculation for CG-2DES calculations by submitting the submit_CG2DES.sh file.
+This example is based on the paper: https://pubs.acs.org/doi/10.1021/acs.jctc.4c00413 
+
+### FMO
+This folder contain an example of a prototypical FMO seven site system. The parameters are taken from http://www.nature.com/articles/nature03429 and
+https://pubs.acs.org/doi/10.1021/jp510074q and the files were used for the paper: https://pubs.acs.org/doi/10.1021/acs.jctc.4c01135 on the TD-MCFRET method. As for the examples above you need to generate the Hamiltonian first with by running the FMO.py script. Example input and submission scripts are available for absorption spectroscopy, the analyse calculation, and TD-MCFRET calculations are available. The analyse calculation is used to make the segmentation for TD-MCFRET. Example files for making dendrograms and analysing the MCFRET rate matrix are also avaiable. In a subfolder Individual the scripts for running MCFRET treating each site as an individual segment is given.

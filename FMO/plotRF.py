@@ -10,6 +10,7 @@ plt.rcParams['xtick.direction']='in'
 plt.rcParams['ytick.direction']='in'
 
 Data = np.loadtxt('RateFile.dat')
+# This script plots the rate response for the transfer between each segment
 
 length=100
 for i in range(12):
@@ -17,7 +18,7 @@ for i in range(12):
 #plt.plot(Data[0:127,0],Data[0:127,1])
 #plt.plot(Data[128:255,0],2*Data[128:255,1],'--')
 plt.xlabel('Time [fs]',fontsize=16)
-plt.ylabel('RateRespinse [arb.u.]',fontsize=16)
+plt.ylabel('RateResponse [arb.u.]',fontsize=16)
 plt.legend()
 plt.show()
 

@@ -1,6 +1,6 @@
 import numpy as np
 import math
-
+# This script converts the rate matrix to latex format
 
 def matrix_to_latex(matrix):
     num_rows = len(matrix)

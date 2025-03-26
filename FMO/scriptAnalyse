@@ -1,25 +1,17 @@
 #!/usr/bin/env bash
-#SBATCH --job-name NISE3
+#SBATCH --job-name FMO_Analyse
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --time=0-02:00:00
 
-#module load foss
-#module load 2023.01 StdEnv
-#module load Anaconda3
-#python FMO.py
+# Load the modules that you also used when compiling the NISE code
+module load foss
 
-module load intel FFTW
-
-#setenv OMP_NUM_THREADS 1
-#setenv MKL_NUM_THREADS 1
+# Defining the number of OpenMP threads as done below is not needed on
+# most clusters, but it cannot hurt.
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 
-#echo $TMPDIR
-#cd $TMPDIR
+# Run the Analyse calculation
+time ../../NISE_2017/bin/NISE inputAnalyse
 
-time ~/git/NISE_2017/bin/NISE inputAnalyse
-
-#cp *.log $WD
-#cp *.dat $WD
