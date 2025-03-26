@@ -1,23 +1,15 @@
 #!/bin/bash
-#SBATCH --job-name NISE3
+#SBATCH --job-name LH2_Coarse_Grained_2D
 #SBATCH --nodes=1
-#SBATCH --ntasks=8
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
 #SBATCH --time=0-06:00:00
 
 module load foss
-module load 2023.01 StdEnv
-#module load intel FFTW
 
 setenv OMP_NUM_THREADS 8
 setenv MKL_NUM_THREADS 8
 
-setenv WD $SLURM_SUBMIT_DIR
+time ../../NISE_2017/bin/NISE input2DCG
+../../NISE_2017/bin/2DFFT input2DCG
 
-#echo $TMPDIR
-#cd $TMPDIR
-
-time ~/git/NISE_CG2DES/NISE_2017/bin/NISE input2DCG
-~/git/NISE_CG2DES/NISE_2017/bin/2DFFT input2DCG
-
-#cp *.log $WD
-#cp *.dat $WD

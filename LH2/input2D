@@ -3,7 +3,7 @@ Couplingcut 0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
 Length 200000
-Samplerate 20
+Samplerate 200
 Lifetime 300
 Timestep 3
 Trotter 1
@@ -11,7 +11,7 @@ Format Dislin
 MinFrequencies 11000 11000 11000
 MaxFrequencies 13000 13000 13000
 Technique 2DUVvis
-FFT 200
+FFT 512
 RunTimes 64 0 64
 Singles 27
 PrintLevel 2
