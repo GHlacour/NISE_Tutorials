@@ -3,7 +3,7 @@ from tqdm import tqdm
 
 print("")
 print("Generating the binary trajectroy for the FMO system.")
-print("The average Hamiltonian is take from:")
+print("The average Hamiltonian is taken from:")
 print("Brixner, T.; Stenger, J.; Vaswani, H. M.; Cho, M.; Blankenship, R. E.;")
 print("Fleming, G. R. Two-Dimensional Spectroscopy of Electronic Couplings in")
 print("Photosynthesis. Nature 2005, 434, 625−628.")

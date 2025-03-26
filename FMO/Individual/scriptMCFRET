@@ -1,22 +1,17 @@
-#!/bin/bash
-#SBATCH --job-name NISE3
+#!/usr/bin/env bash
+#SBATCH --job-name FMO_MCFRET
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-02:00:00
 
-#module load foss
-#module load 2023.01 StdEnv
-module load intel FFTW
+# Load the modules that you also used when compiling the NISE code
+module load foss
 
+# Defining the number of OpenMP threads as done below is not needed on
+# most clusters, but it cannot hurt.
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 
-export WD=$SLURM_SUBMIT_DIR
+# Run the MCFRET calculation
+time ../../../NISE_2017/bin/NISE inputMCFRET
 
-#echo $TMPDIR
-#cd $TMPDIR
-
-time ~/git/NISE_MCFRET2/NISE_2017/bin/NISE inputMCFRET
-
-#cp *.log $WD
-#cp *.dat $WD

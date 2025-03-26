@@ -4,6 +4,8 @@ import numpy
 # from the 1kzu pdb structure file included.
 # To run the code use python 3.7 or newer and type:
 # python GenHam.py
+# This file is using the Hamiltonian from the paper of Sardjan.
+# It is recommended to use the newer Hamiltonian in GenHam.py
 
 E0=12255 # cm-1 The B850 Chromophore average gap
 E1=240 # cm-1 The extra energy for the B800 Chromophore gap

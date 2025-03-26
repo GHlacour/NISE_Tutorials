@@ -1,4 +1,5 @@
 import numpy
+from tqdm import tqdm
 
 # This file create the Hamiltonian trajectory for LH2 using the structure
 # from the 1kzu pdb structure file included.
@@ -8,6 +9,15 @@ import numpy
 # Note that in this file the B850 alpha and beta are split by 300 cm-1
 # to improve the CD spectra. The sigma value for these chromopores is
 # also reduced from 320 to 305 cm-1 compared to the study by Sardjan et al.
+
+print("")
+print("Generating the binary trajectroy for the FMO system.")
+print("The average Hamiltonian adapted from:")
+print("Sardjan, A. S. et al. J. Phys. Chem. B 2020, 124, 9420-9427.")
+print("Note that here the B850 alpha and beta are split by 300 cm-1")
+print("to improve the CD spectra. The sigma value for these chromopores is")
+print("also reduced from 320 to 305 cm-1 compared to the study by Sardjan et al.")
+print("")
 
 E0=12255 # cm-1 The B850 Chromophore average gap
 E1=240 # cm-1 The extra energy for the B800 Chromophore gap
@@ -105,7 +115,7 @@ while True:
           index=index+1
 
 # Verify that the correct number (9) of unique dye atoms were read from file
-print(index)
+#print(index)
 
 # Generate helping arrays for Hamiltonian construction.
 # Accounting for difference between B850 and B800 chromophores
@@ -158,16 +168,16 @@ for ai in range(27):
         # Do indexing for tridiagonal matrix
         ind=int(ai+units*aj-(aj*(aj+1)/2))
         # Print information to screen
-        print(ai)
-        print(aj)
-        print(ind)
+#        print(ai)
+#        print(aj)
+#        print(ind)
         H[ind]=J
-        print(J)
+#        print(J)
 
 # Create initial random numbers
 diag=numpy.random.randn(27)
 # Create diagonal elements
-for st in range(steps):
+for st in tqdm(range(steps)):
    for ai in range(27):
       ind=int(ai+units*ai-(ai*(ai+1)/2))
       # Find energy gap including shift for B800 chromophores

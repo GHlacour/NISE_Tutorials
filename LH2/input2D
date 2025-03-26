@@ -1,26 +1,17 @@
-Propagation RK4
+Propagation Coupling
 Couplingcut 0
-Threshold 0.001
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
-Anharmonicfile Anharmonicity.bin
-Overtonedipolefile OvertoneDipole.bin
 Length 200000
 Samplerate 20
 Lifetime 300
 Timestep 3
 Trotter 1
-Anharmonicity 100
 Format Dislin
 MinFrequencies 11000 11000 11000
 MaxFrequencies 13000 13000 13000
 Technique 2DUVvis
-FFT 2048
-#BeginPoint 0
-#EndPoint 1
-RunTimes 64 64 64
+FFT 200
+RunTimes 64 0 64
 Singles 27
-#Project
-Sites 1
-0
 PrintLevel 2
