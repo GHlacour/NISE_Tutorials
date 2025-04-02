@@ -7,12 +7,7 @@ module load foss
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
-setenv WD $SLURM_SUBMIT_DIR
+# Do circular dichroism with extended dipole approximation
+# and projection on the B850 chromophores
+time ../../NISE_2017/bin/NISE inputCD_ED
 
-#echo $TMPDIR
-#cd $TMPDIR
-
-time ~/git/NISE_2017/bin/NISE inputCD_ED
-
-#cp *.log $WD
-#cp *.dat $WD

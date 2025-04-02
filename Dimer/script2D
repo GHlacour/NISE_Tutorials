@@ -4,25 +4,11 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --time=0-00:30:00
 
-module load 2023.01 StdEnv 
-module load intel/2022b FFTW
+module load foss
 setenv OMP_NUM_THREADS 8
 setenv MKL_NUM_THREADS 1
 
-setenv WD $SLURM_SUBMIT_DIR
+time ../../NISE_2017/bin/NISE input2D
+../../NISE_2017/bin/2DFFT input2D
 
-#echo $TMPDIR
-#cd $TMPDIR
-
-# Copy files to temporary directory
-
-#cp $WD/inp* $TMPDIR
-#cp $WD/stochastic $TMPDIR
-
-#~/git/NISE_CG2DES/NISE_2017/bin/translate inpTra
-time ~/git/NISE_Pop/NISE_2017/bin/NISE input2D
-~/git/NISE_Pop/NISE_2017/bin/2DFFT input2D
-
-#cp *.log $WD
-#cp *.dat $WD
 

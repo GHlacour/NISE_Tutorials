@@ -12,6 +12,6 @@ Format Dislin
 MinFrequencies 11000 11000 11100
 MaxFrequencies 13000 13000 13000
 Technique Analyse
-FFT 2048
+FFT 512
 RunTimes 128 0 128
 Singles 27

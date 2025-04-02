@@ -3,16 +3,10 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 
-module load intel FFTW
+module load foss
+
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
-setenv WD $SLURM_SUBMIT_DIR
+time ../../NISE_2017/bin/NISE inputLum
 
-#echo $TMPDIR
-#cd $TMPDIR
-
-time ~/git/NISE_dev/NISE_2017/bin/NISE inputLum
-
-#cp *.log $WD
-#cp *.dat $WD

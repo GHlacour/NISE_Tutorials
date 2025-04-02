@@ -3,16 +3,9 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
 
-module load foss/2019a
+module load foss
 setenv OMP_NUM_THREADS 8
 setenv MKL_NUM_THREADS 1
 
-setenv WD $SLURM_SUBMIT_DIR
+time ../../NISE_2017/bin/NISE inputDOS
 
-#echo $TMPDIR
-#cd $TMPDIR
-
-time ~/git/NISE_2017/bin/NISE inputDOS
-
-#cp *.log $WD
-#cp *.dat $WD

@@ -5,8 +5,7 @@
 #SBATCH --time=0-01:00:00
 
 #module load foss
-module load 2023.01 StdEnv
-module load intel/2022b FFTW
+module load foss
 
 setenv OMP_NUM_THREADS 4
 setenv MKL_NUM_THREADS 4
@@ -16,8 +15,7 @@ setenv WD $SLURM_SUBMIT_DIR
 #echo $TMPDIR
 #cd $TMPDIR
 
-#time ~/git/NISE_2017/bin/NISE inputPop
-/scratch/hb-compspec/NISE_2017/bin/NISE inputPop
+../../NISE_2017/bin/NISE inputPop
 
 #cp *.log $WD
 #cp *.dat $WD

@@ -2,8 +2,6 @@ Propagation Coupling
 Couplingcut 0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
-Anharmonicfile Anharmonicity.bin
-Overtonedipolefile OvertoneDipole.bin
 Length 200000
 Samplerate 20
 Lifetime 300
@@ -14,7 +12,6 @@ MinFrequencies 11000 11000 11100
 MaxFrequencies 13000 13000 13000
 Technique MCFRET
 Temperature 300
-FFT 2048
 RunTimes 128 128 128
 Singles 27
 Project
