@@ -12,5 +12,5 @@ MinFrequencies 1100 1100 1100
 MaxFrequencies 1300 1300 1300
 Technique Absorption
 FFT 2048
-RunTimes 1024 0 256
+RunTimes 1024 0 1024
 Singles 2

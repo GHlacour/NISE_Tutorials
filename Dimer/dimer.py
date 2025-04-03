@@ -1,4 +1,5 @@
 # Import tk module
+# If not installed on mac first use: brew install python-tk
 import tkinter as tk
 # Import themed tk
 from tkinter import ttk

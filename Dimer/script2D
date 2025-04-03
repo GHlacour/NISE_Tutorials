@@ -1,5 +1,5 @@
 #!/bin/csh
-#SBATCH --job-name "Cluster_FTIR"
+#SBATCH --job-name "Dimer 2DIR"
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --time=0-00:30:00

@@ -1,26 +1,18 @@
 Propagation Coupling
-Couplingcut 0.1
-Threshold 0.001
+Couplingcut 0.0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
-Anharmonicfile Anharmonicity.bin
-Overtonedipolefile OvertoneDipole.bin
 Length 100000
-#Length 10000
 Samplerate 1000
 Lifetime 1000
 Timestep 10
-Trotter 5
+Trotter 1
 Anharmonicity 20
-Format Gnuplot
-#Format Dislin
+Format Dislin
 MinFrequencies 1100 1100 1100
-MaxFrequencies 1400 1400 1400
+MaxFrequencies 1300 1300 1300
 Technique CG_2DES
-#Technique CG_2DES_window_GB
 FFT 512
-#BeginPoint 0
-#EndPoint 1
 RunTimes 256 1 256
 Singles 2
 Temperature 300
