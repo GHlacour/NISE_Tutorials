@@ -11,10 +11,12 @@ import sys
 #import CD
 #import visHam
 
-# This file create the Hamiltonian trajectory for LH2 using the structure
+# This file creates the Hamiltonian for LH2 using the structure
 # from the 1kzu pdb structure file included.
 # To run the code use python 3.7 or newer and type:
-# python GenHam.py
+# python SGenHamQuick.py
+# Here the Hamiltonian of Sardjan is used. We recommend using the GenHam.py
+# to generate a trajectory with a newer Hamiltonian instead.
 
 E0=12255 # cm-1 The B850 Chromophore average gap
 E1=240 # cm-1 The extra energy for the B800 Chromophore gap

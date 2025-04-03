@@ -1,23 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name NISE3
+#SBATCH --job-name LH2_MCFRET
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --time=0-01:00:00
 
-#module load foss
-module load 2023.01 StdEnv
-module load intel/2022b FFTW
 module load foss
 
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
-setenv WD $SLURM_SUBMIT_DIR
+time ../../NISE_2017/bin/NISE inputMCFRET
 
-#echo $TMPDIR
-#cd $TMPDIR
-
-time ~/git/NISE_MCFRET/NISE_2017/bin/NISE inputMCFRET
-
-#cp *.log $WD
-#cp *.dat $WD

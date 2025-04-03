@@ -1,5 +1,18 @@
 import numpy as np
+from tqdm import tqdm
 
+print("")
+print("Generating the binary trajectroy for the FMO system.")
+print("The average Hamiltonian is taken from:")
+print("Brixner, T.; Stenger, J.; Vaswani, H. M.; Cho, M.; Blankenship, R. E.;")
+print("Fleming, G. R. Two-Dimensional Spectroscopy of Electronic Couplings in")
+print("Photosynthesis. Nature 2005, 434, 625−628.")
+print("The frequency fluctuations are adapted from:")
+print("Tempelaar, R.; Jansen, T.L.C.; Knoester, J. Vibrational Beatings")
+print("Conceal Evidence of Electronic Coherence in the FMO Light-Harvesting")
+print("Complex. J. Phys. Chem. B. 2014, 118, 12865-12872.")
+print("") 
+# Run this python script to generate the Hamiltonian trajectories
 units=7
 Horg=np.array([12420, -106, 8, -5, 6, -8, -4,  -106, 12560, 28, 6, 2, 13, 1, 8, 28, 12140, -62, -1, -9, 17, -5, 6, -62, 12315, -70, -19, -57, 6, 2, -1, -70, 12460, 40, -2, -8, 13, -9, -19, 40, 12500, 32, -4, 1, 17, -57, -2, 32, 12400])
 H=Horg.reshape(units,units)
@@ -24,8 +37,6 @@ beta=np.sqrt(1-alpha**2)
 
 file_H=open("Energy.bin","wb")
 file_mu=open("Dipole.bin","wb")
-file_EH=open("EigenEnergy.bin","wb")
-file_Emu=open("EigenDipole.bin","wb")
 
 # Copy Coupling
 for ai in range(units):
@@ -42,7 +53,7 @@ mu4bin=mu
 # Create initial random numbers
 diag=np.random.randn(units)
 # Create diagonal elements
-for st in range(steps):
+for st in tqdm(range(steps)):
     for ai in range(units):
         ind=int(ai+units*ai-(ai*(ai+1)/2))
         HH[ind]=diag[ai]*sigma+Horg[ai*units+ai]
@@ -59,6 +70,4 @@ for st in range(steps):
     muf.tofile(file_mu)
 
 file_H.close
-file_EH.close
 file_mu.close
-file_Emu.close

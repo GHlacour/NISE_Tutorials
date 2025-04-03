@@ -1,6 +1,5 @@
 Propagation Coupling
 Couplingcut 0
-Threshold 0.001
 HamiltonianType ExtendedDipole
 Hamiltonianfile SiteEnergy.bin
 Dipolefile Dipole.bin
@@ -12,16 +11,9 @@ Samplerate 20
 Lifetime 300
 Timestep 3
 Trotter 1
-Anharmonicity 100
 Format Dislin
 MinFrequencies 11000 11000 11100
 MaxFrequencies 13000 13000 13000
 Technique Absorption
-FFT 2048
-#BeginPoint 0
-#EndPoint 1
-RunTimes 128 0 128
+RunTimes 200 0 200
 Singles 27
-#Project
-Sites 1
-0

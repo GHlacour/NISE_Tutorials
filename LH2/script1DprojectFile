@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name Dimer_2DCG
+#SBATCH --job-name LH2_Absorption_project
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --time=0-01:00:00
@@ -9,6 +9,5 @@ module load foss
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
-time ../../NISE_2017/bin/NISE input2DCG
-../../NISE_2017/bin/2DFFT input2DCG
+time ../../NISE_2017/bin/NISE input1DprojectFile
 

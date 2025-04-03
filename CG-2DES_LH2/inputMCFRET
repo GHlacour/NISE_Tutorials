@@ -1,24 +1,18 @@
 Propagation Coupling
 Couplingcut 0
-Threshold 0.001
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
-Anharmonicfile Anharmonicity.bin
-Overtonedipolefile OvertoneDipole.bin
 Length 1000000
 Samplerate 20
 Lifetime 300
 Timestep 3
 Trotter 1
 Temperature 300
-Anharmonicity 100
 Format Dislin
 MinFrequencies 9000 9000 9000
 MaxFrequencies 15000 15000 15000
 Technique MCFRET
 FFT 256
-#BeginPoint 0
-#EndPoint 1
 RunTimes 128 0 128
 Singles 27
 Project

@@ -3,11 +3,10 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 
-module restore
+module load foss
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
 # Run program from where is was submitted
-~/github/NISE_2017/bin/translate inpTra
-time ~/github/NISE_2017/bin/NISE inputAnalyse
+time ../../NISE_2017/bin/NISE inputAnalyse
 

@@ -1,10 +1,9 @@
 #!/bin/csh
-#SBATCH --job-name NISE3
+#SBATCH --job-name NISE3_SFG
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 
-module load 2023.01 StdEnv
-module load intel FFTW
+module load foss
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
@@ -12,8 +11,8 @@ setenv MKL_NUM_THREADS 1
 cd $SLURM_SUBMIT_DIR
 
 module load Anaconda3
-#python make_Polarizability.bin.py 
+# Gemnerate a polarizability file
+python make_Polarizability.bin.py 
 # Run program in directory from where it was submitted
-#~/git/NISE_2017/bin/translate inpTra
-time ~/git/NISE_dev/NISE_2017/bin/NISE inputSFG
+time ../../NISE_2017/bin/NISE inputSFG
 

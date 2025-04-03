@@ -7,12 +7,6 @@ module load foss
 setenv OMP_NUM_THREADS 1
 setenv MKL_NUM_THREADS 1
 
-setenv WD $SLURM_SUBMIT_DIR
+# Analyze Hamiltonian trajectory for the extended dipole approximation
+time ../../NISE_2017/bin/NISE inputAnalyseExtended
 
-#echo $TMPDIR
-#cd $TMPDIR
-
-time ~/git/NISE_2017/bin/NISE inputAnalyseExtended
-
-#cp *.log $WD
-#cp *.dat $WD

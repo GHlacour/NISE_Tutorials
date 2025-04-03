@@ -1,25 +1,15 @@
 Propagation Coupling
 Couplingcut 0
-Threshold 0.001
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
-Anharmonicfile Anharmonicity.bin
-Overtonedipolefile OvertoneDipole.bin
 Length 1000000
 Samplerate 20
 Lifetime 2500
 Timestep 5
 Trotter 1
-Anharmonicity 100
 Format Dislin
 MinFrequencies 11500 11500 11500
 MaxFrequencies 13000 13000 13000
 Technique Absorption
-#FFT 128
-#BeginPoint 0
-#EndPoint 1
 RunTimes 200 0 200
 Singles 7
-#Project
-Sites 1
-0

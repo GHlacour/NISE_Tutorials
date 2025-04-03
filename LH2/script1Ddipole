@@ -1,5 +1,5 @@
 #!/bin/csh
-#SBATCH --job-name NISE3
+#SBATCH --job-name LH2_Absorption_dipole
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 
@@ -9,10 +9,5 @@ setenv MKL_NUM_THREADS 1
 
 setenv WD $SLURM_SUBMIT_DIR
 
-#echo $TMPDIR
-#cd $TMPDIR
+time ../../NISE_2017/bin/NISE input1Ddipole
 
-time ~/git/NISE_2017/bin/NISE input1Ddipole
-
-#cp *.log $WD
-#cp *.dat $WD

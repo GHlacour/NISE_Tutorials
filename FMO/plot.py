@@ -19,7 +19,7 @@ plt.show()
 Data = np.loadtxt('Absorption.dat')
 
 plt.plot(Data[:,0],Data[:,1])
-plt.xlabel('$\omega$ [cm$^{-1}$]',fontsize=16)
+plt.xlabel(r'$\omega$ [cm$^{-1}$]',fontsize=16)
 plt.ylabel('Absorption [arb.u.]',fontsize=16)
 plt.show()
 
