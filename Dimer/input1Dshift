@@ -2,6 +2,7 @@ Propagation Coupling
 Couplingcut 0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
+SingleShiftfile ShiftFile.dat
 Length 100000
 Samplerate 100
 Lifetime 1000
