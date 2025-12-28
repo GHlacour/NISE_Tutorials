@@ -14,7 +14,7 @@ w1Dim=int(np.sqrt(len(Data[:,0])))
 w3Dim=w1Dim
 
 wmin=1100
-wmax=1400
+wmax=1300
 
 step=50
 mmax=np.max(np.abs(Data[:,3]))
@@ -42,13 +42,13 @@ plt.yticks(np.arange(wmin,wmax+1,step),fontsize=12,rotation=0)
 plt.show()
 fig.savefig('2Dpar.eps')
 
-Data = np.loadtxt('Rwpar.II.dat')
+Data = np.loadtxt('2D.per.dat')
 
 w1Dim=int(np.sqrt(len(Data[:,0])))
 w3Dim=w1Dim
 
 wmin=1100
-wmax=1400
+wmax=1300
 
 step=50
 mmax=np.max(np.abs(Data[:,3]))

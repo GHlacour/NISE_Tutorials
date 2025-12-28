@@ -3,9 +3,8 @@ Couplingcut 0.0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
 Length 100000
-Samplerate 500
+Samplerate 100
 Lifetime 1000
-xWindow Hann
 Timestep 10
 Trotter 1
 Anharmonicity 20
@@ -13,7 +12,7 @@ Format Gnuplot
 #Format Dislin
 MinFrequencies 1100 1100 1100
 MaxFrequencies 1300 1300 1300
-Technique 2DUVvis
+Technique 2DIR
 FFT 512
 RunTimes 256 0 256
 Singles 2
