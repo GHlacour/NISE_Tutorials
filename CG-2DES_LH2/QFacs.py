@@ -152,8 +152,8 @@ def is_time_infinite(K_FD, eigenvectors, D, tol=1e-10, N_iter=40000, step=100):
 # Given values
 system = 'LH2'  # Name of the system
 # Current directory (change if necessary by pwd)
-path = '/scratch/p317440/Jun25NISE/Tutorials_NISE/F-2DES-CG_LH2/'
-#path = '/Users/stephanie/Documents/GitHub/Current_NISE_OD/NISE_Tutorials/0QF/'  # Local
+path = './' # Current directory
+
 # Generate the filename with the system name or change name to filename
 # filename = f'{path}{system}_transfer_matrix.dat'
 filename = 'RateMatrix.dat'
