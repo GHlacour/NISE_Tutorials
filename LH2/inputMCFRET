@@ -3,14 +3,14 @@ Couplingcut 0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
 Length 200000
-Samplerate 20
+Samplerate 2000
 Lifetime 300
 Timestep 3
 Trotter 1
 Format Dislin
 MinFrequencies 11000 11000 11100
 MaxFrequencies 13000 13000 13000
-Technique MCFRET
+Technique MCFRET-4th-full
 Temperature 300
 RunTimes 128 128 128
 Singles 27

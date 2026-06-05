@@ -3,7 +3,7 @@ Couplingcut 0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
 Length 100000
-Samplerate 100
+Samplerate 10
 Lifetime 1000
 Timestep 10
 Trotter 1
@@ -12,5 +12,5 @@ MinFrequencies 1100 1100 1100
 MaxFrequencies 1300 1300 1300
 Technique Absorption
 FFT 2048
-RunTimes 1024 0 1024
+RunTimes 256 0 256
 Singles 2

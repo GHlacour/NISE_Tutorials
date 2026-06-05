@@ -22,7 +22,7 @@ stationary_distribution_org /= np.sum(stationary_distribution_org)  # Normalize 
 Ener=-np.log(stationary_distribution_org/Degeneracy)*77/1.44
 print(Ener)
 
-Data = np.loadtxt('QC_RateMatrix.dat')
+Data = np.loadtxt('TC_RateMatrix.dat')
 Energies=np.loadtxt('SegmentEnergies.dat',skiprows=1)
 Degeneracy=np.array([1,2,2,2])
 BZD=Degeneracy*np.exp(-(Energies[:,1])/77*1.44)
