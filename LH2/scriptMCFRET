@@ -1,13 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name LH2_MCFRET
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
+#SBATCH --ntasks=4
 #SBATCH --time=0-01:00:00
 
-module load foss
+module load foss/2023a
 
-setenv OMP_NUM_THREADS 1
-setenv MKL_NUM_THREADS 1
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
 
 time ../../NISE_2017/bin/NISE inputMCFRET
 

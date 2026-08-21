@@ -5,7 +5,7 @@
 #SBATCH --time=0-02:00:00
 
 # Load the modules that you also used when compiling the NISE code
-module load foss
+module load foss/2023a
 
 # Defining the number of OpenMP threads as done below is not needed on
 # most clusters, but it cannot hurt.
