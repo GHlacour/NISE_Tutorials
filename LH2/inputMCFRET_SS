@@ -2,17 +2,18 @@ Propagation Coupling
 Couplingcut 0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
+SingleShiftfile SingleShift.dat
 Length 200000
 Samplerate 20
 Lifetime 300
 Timestep 3
 Trotter 1
-#ImaginaryTimesteps 10
 Format Dislin
-MinFrequencies 11000 11000 11100
+MinFrequencies 1000 11000 11100
 MaxFrequencies 13000 13000 13000
-Technique Luminescence
+Technique MCFRET
 Temperature 300
-FFT 256
-RunTimes 128 0 128
+RunTimes 128 128 128
 Singles 27
+Project
+Projectfile ProjectCG.txt

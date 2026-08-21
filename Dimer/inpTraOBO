@@ -1,5 +1,5 @@
-InputEnergy Energy.txt
-InputDipole Dipole.txt
+InputEnergy EnergyOBO.txt
+InputDipole DipoleOBO.txt
 OutputEnergy Energy.bin
 OutputDipole Dipole.bin
 Singles 2

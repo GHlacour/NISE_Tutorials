@@ -9,19 +9,10 @@ plt.rcParams['ytick.major.width']=2
 plt.rcParams['xtick.direction']='in'
 plt.rcParams['ytick.direction']='in'
 
-Data = np.loadtxt('TD_Absorption.dat')
-
-plt.plot(Data[:,0],Data[:,1])
-plt.xlabel('Time [fs]',fontsize=16)
-plt.ylabel('Response function [arb.u.]',fontsize=16)
-plt.show()
-
-Data = np.loadtxt('Absorption.dat')
-area=np.sum(Data[:,1])*(Data[1,0]-Data[0,0])
-dt=5
-c=3e-5
-area=area*dt*c
-print("Area "+str(area))
+Data = np.fromfile("Absorption.bin", dtype=np.float32)
+print(Data)
+Data = Data.reshape((len(Data)//3,3))
+print(Data)
 
 plt.plot(Data[:,0],Data[:,1])
 plt.xlabel('$\omega$ [cm$^{-1}$]',fontsize=16)

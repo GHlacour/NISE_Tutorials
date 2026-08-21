@@ -2,10 +2,11 @@ Propagation Coupling
 Couplingcut 0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
+#Outputformat Text
 Length 100000
 Samplerate 100
 Lifetime 1000
-Timestep 10
+Timestep 5
 Trotter 1
 Format Dislin
 MinFrequencies 1100 1100 1100

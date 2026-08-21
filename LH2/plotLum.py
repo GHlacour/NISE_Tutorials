@@ -9,9 +9,9 @@ plt.rcParams['ytick.major.width']=2
 plt.rcParams['xtick.direction']='in'
 plt.rcParams['ytick.direction']='in'
 
-Data = np.loadtxt('Luminescence.dat_org')
-Data[:,1]=Data[:,1]/np.max(Data[:,1])
-plt.plot(Data[:,0],Data[:,1])
+#Data = np.loadtxt('Luminescence.dat_org')
+#Data[:,1]=Data[:,1]/np.max(Data[:,1])
+#plt.plot(Data[:,0],Data[:,1])
 #plt.xlabel('Time [fs]',fontsize=16)
 #plt.ylabel('Response function [arb.u.]',fontsize=16)
 #plt.show()

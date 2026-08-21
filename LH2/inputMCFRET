@@ -11,7 +11,7 @@ Format Dislin
 MinFrequencies 11000 11000 11100
 MaxFrequencies 13000 13000 13000
 Technique MCFRET
-Temperature 300
+Temperature 3
 RunTimes 128 128 128
 Singles 27
 Project

@@ -2,15 +2,17 @@ Propagation Coupling
 Couplingcut 0
 Hamiltonianfile Energy.bin
 Dipolefile Dipole.bin
-Length 200000
-Samplerate 100
+SingleShiftfile SingleShift.dat
+Length 100000
+Samplerate 10
 Lifetime 1000
 Timestep 10
+TimeIncrement 1 1 1
+Threshold 0.4
 Trotter 1
 Format Dislin
 MinFrequencies 1100 1100 1100
 MaxFrequencies 1300 1300 1300
-Technique Correlation
-FFT 2048
-RunTimes 256 0 256
+Technique Analyse
+RunTimes 1024 0 256
 Singles 2
