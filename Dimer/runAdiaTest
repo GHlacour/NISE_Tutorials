@@ -1,0 +1,6 @@
+../../NISE_2017/bin/NISE input1D
+cp Absorption.dat Absorption_org.dat
+../../NISE_2017/bin/NISE input1D_non
+cp Absorption.dat Absorption_non.dat
+../../NISE_2017/bin/NISE input1D_adia
+cp Absorption.dat Absorption_adia.dat 
