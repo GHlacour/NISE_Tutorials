@@ -1,7 +1,9 @@
 Propagation Coupling
 Couplingcut 0
 Threshold 0.4
-Hamiltonianfile Energy.bin
+HamiltonianType TransitionDipole
+Hamiltonianfile SiteEnergy.bin
+Positionfile Positions.bin
 Dipolefile Dipole.bin
 Length 200000
 Samplerate 1000

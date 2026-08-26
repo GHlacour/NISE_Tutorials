@@ -6,12 +6,13 @@ Length 100000
 Samplerate 100
 Lifetime 1000
 Window Hann
+
 Timestep 10
 Trotter 1
-Format Dislin
 MinFrequencies 1000 1100 1100
 MaxFrequencies 1400 1300 1300
 Technique Absorption
 FFT 256
 RunTimes 256 0 128
 Singles 2
+Outputformat Compact

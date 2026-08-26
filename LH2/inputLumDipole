@@ -1,17 +1,21 @@
 Propagation Coupling
 Couplingcut 0
-Threshold 0.4
-Hamiltonianfile Energy.bin
+HamiltonianType TransitionDipole
+Hamiltonianfile SiteEnergy.bin
 Dipolefile Dipole.bin
+Positionfile Positions.bin
 Length 200000
-Samplerate 1000
+Samplerate 20
 Lifetime 300
 Timestep 3
 Trotter 1
+#ImaginaryTimesteps 4
+PrintLevel 0
 Format Dislin
 MinFrequencies 11000 11000 11100
 MaxFrequencies 13000 13000 13000
-Technique Analyse
-FFT 512
+Technique Luminescence
+Temperature 300
+FFT 256
 RunTimes 128 0 128
 Singles 27

@@ -25,11 +25,11 @@ Data[:,1]=Data[:,1]/ymax
 Datax[:,1]=Datax[:,1]/ymax
 Datay[:,1]=Datay[:,1]/ymax
 Dataz[:,1]=Dataz[:,1]/ymax
-plt.plot(Data[:,0],Data[:,1])
+plt.plot(Data[:,0],Data[:,1],'.')
 plt.plot(Data[:,0],Datax[:,1])
 plt.plot(Data[:,0],Datay[:,1])
 plt.plot(Data[:,0],Dataz[:,1])
 plt.xlabel('$\omega$ [cm$^{-1}$]',fontsize=16)
-plt.ylabel('Absorption [arb.u.]',fontsize=16)
+plt.ylabel('Luminescence [arb.u.]',fontsize=16)
 plt.show()
 

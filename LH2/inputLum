@@ -7,7 +7,8 @@ Samplerate 20
 Lifetime 300
 Timestep 3
 Trotter 1
-ImaginaryTimesteps 4
+#ImaginaryTimesteps 4
+PrintLevel 1
 Format Dislin
 MinFrequencies 11000 11000 11100
 MaxFrequencies 13000 13000 13000
