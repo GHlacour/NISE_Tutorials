@@ -1,0 +1,15 @@
+Propagation Coupling
+Couplingcut 0
+Hamiltonianfile Trans_adiabatic_hamiltonian.bin
+Dipolefile Trans_dipole_avg_basis.bin
+Length 200000
+Samplerate 20
+Lifetime 300
+Timestep 3
+Trotter 1
+Format Dislin
+MinFrequencies 11000 11000 11100
+MaxFrequencies 13000 13000 13000
+Technique Absorption
+RunTimes 200 0 200
+Singles 27

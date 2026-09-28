@@ -1,0 +1,10 @@
+InputEnergy Trans_nonadiabatic_hamiltonian.bin
+InputDipole Trans_dipole_avg_basis.bin
+OutputEnergy Energy.txt
+OutputDipole Dipole.txt
+Singles 2
+Doubles 0
+Skip Doubles
+Length 100000
+InputFormat GROBIN
+OutputFormat GROASC
